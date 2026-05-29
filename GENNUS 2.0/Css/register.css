@@ -1,37 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
-
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* O padding não infla o elemento. O tamanho que você define É o tamanho final. */
-}
-
-
 /* ================================================
    REGISTER.CSS
    Complementa o login.css sem repetir nada.
    Contém: layout do cadastro, modal de termos,
    botão de olho e todos os ajustes específicos.
 ================================================ */
-
-:root {
-  --bg:              #000000;           /* Fundo principal — preto puro */
-  --bg-input:        #0d0d0d;           /* Fundo dos campos — levemente diferente do preto pra criar contraste */
-  --bg-input-focus:  #111111;           /* Fundo dos campos quando em foco */
-  --roxo:            #a855f7;           /* Roxo principal do sistema — mesmo da landing */
-  --roxo-escuro:     #7e22ce;           /* Roxo mais escuro pro gradiente e hover */
-  --roxo-hover:      #9333ea;           /* Hover do botão */
-  --roxo-borda:      rgba(168, 85, 247, 0.2);  /* Borda sutil dos inputs */
-  --roxo-borda-foco: rgba(168, 85, 247, 0.7);  /* Borda mais intensa no foco */
-  --texto:           #ffffff;           /* Texto principal */
-  --texto-muted:     #888888;           /* Texto secundário — placeholders, legendas */
-  --texto-label:     #cccccc;           /* Labels dos inputs */
-  --borda-divisor:   rgba(255,255,255,0.06); /* Linhas divisórias sutis */
-}
- 
  
 /* ================================================
    WRAPPER — maior que o login pra acomodar mais campos
@@ -56,10 +28,6 @@
   width: 100%;
   margin-top: 4px;
 }
-
-.login-logo {
-  text-transform: uppercase;
-}
  
 /* ================================================
    GRID DE DUAS COLUNAS
@@ -82,8 +50,8 @@
 .input-ddi {
   background: var(--bg-input);
   border: 1px solid var(--roxo-borda);
-  border-right: none;           /* Une visualmente com o input de número. */
-  border-radius: 10px 0 0 10px; /* Arredonda só os cantos da esquerda. */
+  border-right: none;
+  border-radius: 10px 0 0 10px;
   color: var(--texto);
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
@@ -102,15 +70,13 @@
 }
  
 .input-phone {
-  border-radius: 0 10px 10px 0; /* Arredonda só os cantos da direita. */
+  border-radius: 0 10px 10px 0;
   border-left: none;
-  padding-left: 14px;           /* Sem ícone — remove o padding extra. */
+  padding-left: 14px;
 }
  
 .phone-wrapper:focus-within .input-ddi,
 .phone-wrapper:focus-within .input-phone {
-  /* :focus-within = "algum filho desta div está em foco".
-     Colore os dois elementos ao mesmo tempo pra parecer um campo único focado. */
   border-color: var(--roxo-borda-foco);
   background: var(--bg-input-focus);
 }
@@ -126,7 +92,7 @@
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  padding-right: 40px; /* Espaço pra seta customizada. */
+  padding-right: 40px;
 }
  
 .select-arrow {
@@ -144,23 +110,18 @@
 }
  
 /* ================================================
-   BOTÃO DE OLHO — toggle de visibilidade da senha
- 
-   Funciona assim: o botão fica posicionado absolutamente
-   dentro do .input-wrapper (que tem position: relative).
-   O JS alterna o type do input entre "password" e "text"
-   e troca qual SVG está visível.
+   BOTÃO DE OLHO
 ================================================ */
 .btn-eye {
   position: absolute;
-  right: 12px;              /* 12px da borda direita do input-wrapper. */
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;         /* Sem fundo — integra ao campo. */
+  background: none;
   border: none;
   padding: 4px;
   cursor: pointer;
-  color: #444;              /* Cinza discreto no estado normal. */
+  color: #444;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,30 +130,24 @@
 }
  
 .btn-eye:hover {
-  color: var(--roxo);                  /* Roxo no hover. */
-  background: rgba(168, 85, 247, 0.08); /* Fundo roxo translúcido — destaque sutil. */
+  color: var(--roxo);
+  background: rgba(168, 85, 247, 0.08);
 }
  
-/* Quando o campo de senha está em foco, o ícone de olho já fica roxo */
 .input-wrapper:focus-within .btn-eye {
   color: #666;
 }
  
-/* Os campos de senha precisam de padding-right extra pra o texto não ficar atrás do botão */
 .input-password-field {
-  padding-right: 42px; /* Mesmo tamanho que o botão de olho (32px) + margem (10px). */
+  padding-right: 42px;
 }
  
 .eye-icon {
-  transition: opacity 0.15s; /* Fade suave ao trocar de ícone. */
+  transition: opacity 0.15s;
 }
  
 /* ================================================
    BOTÃO DE LINK (TERMOS)
-   Parece um link, mas é um <button type="button">.
-   Por quê button e não <a>? Porque aciona uma ação
-   (abrir modal) em vez de navegar pra outro endereço.
-   Semanticamente mais correto e acessível.
 ================================================ */
 .btn-link-terms {
   background: none;
@@ -200,16 +155,16 @@
   padding: 0;
   color: var(--roxo);
   font-family: 'Inter', sans-serif;
-  font-size: inherit;       /* Herda o tamanho do .label-check. */
+  font-size: inherit;
   font-weight: 500;
   cursor: pointer;
   text-decoration: underline;
-  text-underline-offset: 2px; /* Afasta o sublinhado do texto — mais elegante. */
+  text-underline-offset: 2px;
   transition: color 0.2s;
 }
  
 .btn-link-terms:hover {
-  color: #c084fc; /* Roxo mais claro no hover. */
+  color: #c084fc;
 }
  
 /* ================================================
@@ -219,74 +174,67 @@
   font-size: 0.8rem;
   color: #f87171;
   text-align: center;
-  display: none; /* O JS exibe quando há erro. */
+  display: none;
 }
  
 /* ================================================
    MODAL DE TERMOS DE USO
- 
-   Estrutura de camadas:
-   1. .modal-overlay — fundo escuro que cobre toda a tela
-   2. .modal-box     — o card branco (escuro) com o conteúdo
-   3. .modal-header  — título + botão fechar
-   4. .modal-body    — área com scroll (onde ficam os termos)
-   5. .modal-footer  — barra de progresso + botões
 ================================================ */
  
 /* Camada 1: sobreposição escura */
 .modal-overlay {
-  position: fixed;   /* fixed = fica colado na tela mesmo ao rolar a página. */
-  inset: 0;          /* inset: 0 = top:0, right:0, bottom:0, left:0 de uma vez. Ocupa tela inteira. */
-  background: rgba(0, 0, 0, 0.75); /* Fundo semitransparente — deixa ver o formulário atrás. */
-  backdrop-filter: blur(6px);      /* Desfoca o que está atrás — efeito vidro fosco elegante. */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;     /* Na frente de absolutamente tudo. */
-  padding: 20px;     /* Respiro em telas pequenas. */
- 
-  /* Estado inicial: invisível e inacessível */
+  z-index: 9999;
+  padding: 20px;
   opacity: 0;
-  pointer-events: none; /* Sem pointer-events, cliques passam através — o modal não "existe" pro mouse. */
+  pointer-events: none;
   transition: opacity 0.25s ease;
 }
  
-/* Estado ativo: o JS adiciona a classe .modal-open ao overlay */
 .modal-overlay.modal-open {
   opacity: 1;
-  pointer-events: all; /* Agora captura cliques normalmente. */
+  pointer-events: all;
 }
  
-/* Camada 2: o card do modal */
+/* Camada 2: o card do modal
+   CORREÇÃO: adicionamos opacity: 0 aqui e opacity: 1 no .modal-open.
+   Antes o .fade-in-modal travava em opacity:0 sem nunca voltar pra 1.
+   A transição agora anima os dois juntos: opacity + translateY. */
 .modal-box {
   background: #0a0a0a;
   border: 1px solid rgba(168, 85, 247, 0.2);
   border-radius: 16px;
   width: 100%;
   max-width: 560px;
-  max-height: 85vh;  /* Nunca ultrapassa 85% da altura da tela — sempre cabe sem cortar. */
+  max-height: 85vh;
   display: flex;
-  flex-direction: column; /* Header + body + footer empilhados. */
-  overflow: hidden;       /* O border-radius funciona nos filhos graças a isso. */
+  flex-direction: column;
+  overflow: hidden;
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.6),         /* Sombra principal profunda. */
-    0 0 0 1px rgba(168, 85, 247, 0.1),       /* Borda extra sutilíssima. */
-    0 0 80px rgba(168, 85, 247, 0.06);       /* Brilho roxo difuso. */
+    0 24px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(168, 85, 247, 0.1),
+    0 0 80px rgba(168, 85, 247, 0.06);
  
-  /* Começa levemente abaixo e sobe ao aparecer — animação de entrada */
-  transform: translateY(12px);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;                   /* começa invisível */
+  transform: translateY(12px);  /* começa 12px abaixo */
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity  0.25s ease; /* CORREÇÃO: opacity entra na transição */
 }
  
 .modal-overlay.modal-open .modal-box {
-  transform: translateY(0); /* Sobe pra posição final. */
+  opacity: 1;            /* CORREÇÃO: fica visível quando o overlay abre */
+  transform: translateY(0);
 }
  
-/* Animação de fade no modal-box — complementa o translateY */
-.fade-in-modal {
-  opacity: 0;
-  animation: none; /* Controlado pelo JS via .modal-open, não por @keyframes aqui. */
-}
+/* CORREÇÃO: .fade-in-modal removida — ela travava o modal em opacity:0
+   sem nenhuma animação ou transição pra reverter isso.
+   O efeito de entrada agora é controlado 100% pelo .modal-open acima. */
  
 /* Camada 3: cabeçalho */
 .modal-header {
@@ -295,7 +243,7 @@
   justify-content: space-between;
   padding: 20px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  flex-shrink: 0; /* flex-shrink: 0 impede o header de encolher quando o body cresce. */
+  flex-shrink: 0;
 }
  
 .modal-header-left {
@@ -304,7 +252,6 @@
   gap: 12px;
 }
  
-/* Ícone decorativo no header do modal */
 .modal-icon {
   width: 36px;
   height: 36px;
@@ -326,7 +273,6 @@
   letter-spacing: -0.02em;
 }
  
-/* Botão X de fechar */
 .modal-close {
   background: none;
   border: none;
@@ -347,29 +293,20 @@
  
 /* Camada 4: corpo com scroll */
 .modal-body {
-  flex: 1;           /* Ocupa todo o espaço vertical entre header e footer. */
-  overflow-y: auto;  /* Scroll vertical quando o conteúdo não cabe. */
+  flex: 1;
+  overflow-y: auto;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
- 
-  /* Scroll customizado — sem a barra cinza padrão do sistema */
   scrollbar-width: thin;
   scrollbar-color: rgba(168, 85, 247, 0.3) transparent;
 }
  
-/* Scroll customizado pra Chrome/Safari */
-.modal-body::-webkit-scrollbar {
-  width: 4px;
-}
- 
-.modal-body::-webkit-scrollbar-track {
-  background: transparent;
-}
- 
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
 .modal-body::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.3); /* Scrollbar roxinha. */
+  background: rgba(168, 85, 247, 0.3);
   border-radius: 2px;
 }
  
@@ -379,7 +316,6 @@
   font-style: italic;
 }
  
-/* Cada bloco de texto dos termos */
 .terms-block {
   display: flex;
   flex-direction: column;
@@ -408,25 +344,24 @@
 /* Camada 5: rodapé do modal */
 .modal-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  flex-shrink: 0; /* Nunca encolhe — sempre visível na base do modal. */
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 0;
 }
  
-/* Barra de progresso de leitura */
 .read-progress-container {
   width: 100%;
   height: 2px;
-  background: rgba(255, 255, 255, 0.05); /* Trilho cinza escuro. */
+  background: rgba(255, 255, 255, 0.05);
 }
  
 .read-progress-bar {
   height: 100%;
-  width: 0%;             /* Começa em 0% — cresce conforme o scroll do .modal-body. */
+  width: 0%;
   background: linear-gradient(90deg, var(--roxo-escuro), var(--roxo));
   border-radius: 1px;
-  transition: width 0.15s ease; /* Animação suave ao crescer. */
+  transition: width 0.15s ease;
 }
  
 .modal-footer-actions {
@@ -440,7 +375,7 @@
 .read-hint {
   font-size: 0.75rem;
   color: #444;
-  white-space: nowrap; /* Não quebra linha — ocupa só o espaço necessário. */
+  white-space: nowrap;
 }
  
 .modal-buttons {
@@ -449,7 +384,6 @@
   flex-shrink: 0;
 }
  
-/* Botão "Recusar" — menos chamativo que o aceitar */
 .btn-modal-recusar {
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -467,7 +401,6 @@
   color: #999;
 }
  
-/* Botão "Aceitar" — mesmo estilo do btn-entrar, mas menor */
 .btn-modal-aceitar {
   background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
   color: #fff;
@@ -486,10 +419,9 @@
   overflow: hidden;
 }
  
-/* Estado desabilitado — enquanto o usuário não terminou de ler */
 .btn-modal-aceitar:disabled {
-  opacity: 0.35;          /* Aparência de "inativo". */
-  cursor: not-allowed;    /* Cursor de proibido — feedback visual de que não pode clicar. */
+  opacity: 0.35;
+  cursor: not-allowed;
   transform: none;
 }
  
@@ -498,7 +430,6 @@
   box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
 }
  
-/* Brilho que passa pelo botão ao ser habilitado */
 .btn-modal-aceitar::before {
   content: '';
   position: absolute;
@@ -518,26 +449,10 @@
    RESPONSIVIDADE
 ================================================ */
 @media (max-width: 480px) {
-  .form-row {
-    grid-template-columns: 1fr; /* Uma coluna em mobile. */
-  }
- 
-  .register-wrapper {
-    max-width: 100%;
-  }
- 
-  .modal-footer-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
- 
-  .modal-buttons {
-    flex-direction: column;
-  }
- 
+  .form-row { grid-template-columns: 1fr; }
+  .register-wrapper { max-width: 100%; }
+  .modal-footer-actions { flex-direction: column; align-items: stretch; }
+  .modal-buttons { flex-direction: column; }
   .btn-modal-recusar,
-  .btn-modal-aceitar {
-    width: 100%;
-    justify-content: center;
-  }
+  .btn-modal-aceitar { width: 100%; justify-content: center; }
 }
