@@ -1,74 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gennus - Dashboard</title>
-    <link rel="stylesheet" href="Css/dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <main class="dashboard-page">
-        <nav class="sidebar-main">
-            <div class="sidebar-logo">GENNUS</div>
-            <div class="sidebar-menu">
-                <a href="dashboard.html" class="sidebar-link-root active">Dashboard</a>
-                <div class="sidebar-separator" style="height: 1px; background: rgba(255,255,255,0.05); margin: 10px 0;"></div>
-                <a href="produtos.html" class="sidebar-link-root">Produtos</a>
-                <a href="clientes.html" class="sidebar-link-root">Clientes</a>
-                <a href="funcionarios.html" class="sidebar-link-root">Funcionários</a>
-                <div class="sidebar-separator" style="height: 1px; background: rgba(255,255,255,0.05); margin: 10px 0;"></div>
-                <a href="vendas.html" class="sidebar-link-root">Vendas</a>
-                <a href="financas.html" class="sidebar-link-root">Despesas</a>
-                <a href="charts.html" class="sidebar-link-root">Relatórios</a>
-            </div>
+    <title>Dashboard - Gennus</title>
 
-            <div class="sidebar-footer">
-                <a href="perfil.html" class="user-profile-card" style="text-decoration: none;">
-                    <div class="user-avatar-placeholder" id="user-initials" style="width: 35px; height: 35px; border-radius: 50%; background: #a855f7; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">R</div>
-                    <div class="user-info-text" style="display: flex; flex-direction: column; margin-left: 10px;">
-                        <span class="user-name-small" id="side-user-name" style="font-size: 0.8rem; color: #fff; font-weight: bold;">Rafael</span>
-                        <span class="user-role-small" style="font-size: 0.65rem; color: #a855f7;">Administrador</span>
-                    </div>
-                </a>
-                <a href="login.html" style="color: #f87171; text-decoration: none; font-size: 0.7rem; display: block; margin-top: 15px; font-weight: bold; text-align: center;">Sair do Sistema</a>
+    <link rel="stylesheet" href="/GENNUS 2.0/Css/dashboard.css"> <!--pode fazer o arquivo css e colocar ai-->
+
+</head>
+
+<body>
+
+    <!-- só avisando que essa porra ta desorganizada pra caralho, outra hora nois organiza melhor, só pra já ter pronto algumas estruturas-->
+
+    <main class="dashboard-page">
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar-main">
+            <div class="bg-glow"></div>
+            <div class="sidebar-logo">GENNUS</div>
+
+            <details>
+                <summary>Produtos</summary>
+                <a href="/GENNUS 2.0/produtos.html">Lista de Produtos</a>
+                <a href="#">Adicionar Produto</a>
+                <a href="#">Editar / Excluir</a>
+            </details>
+
+            <details>
+                <summary>Vendas</summary>
+                <a href="/GENNUS 2.0/resumo.html">Resumo do Período</a>
+                <a href="/GENNUS 2.0/renda.html">Renda Bruta / Líquida</a>
+                <a href="/GENNUS 2.0/top-itens.html">Top Itens</a>
+            </details>
+
+            <details open>
+                <summary>Finanças</summary>
+                <a href="/GENNUS 2.0/receita.html" class="sidebar-link-active">Receita</a>
+                <a href="/GENNUS 2.0/despesas.html">Despesas</a>
+                <a href="/GENNUS 2.0/lucro.html">Lucro</a>
+                <a href="#">IA Feedback (SOON)</a>
+            </details>
+
+            <details>
+                <summary>Relatórios</summary>
+                <a href="/GENNUS 2.0/charts.html">Gráficos</a>
+                <a href="#">Relatório</a>
+            </details>
+
+            <details class="config-details">
+                <summary>Configurações</summary>
+                <a href="#">Período de Fechamento</a>
+                <a href="#">Personalizar</a>
+                <a href="#">Dados da Empresa</a>
+            </details>
+
+            <div class="sidebar-user">
+                <div class="perfil-border"></div>
+                <span>Perfil</span>
+                <a href="profile.html">Nome do Usuário</a>
+                <a href="#">Logout</a>
             </div>
         </nav>
 
-        <div class="dashboard-content" style="flex: 1; margin-left: 280px; padding: 40px;">
-            <h1 id="welcome-title" style="font-family: 'Space Grotesk'; font-size: 2.2rem; margin-bottom: 25px;">Dashboard</h1>
-            
-            <div class="dashboard-values" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 25px;">
-                <div class="metric-card" style="background: #0c0c0c; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px;">
-                    <h3 style="font-size: 0.7rem; color: #666; text-transform: uppercase;">Receita Bruta</h3>
-                    <span id="dash-bruta" style="font-family: 'Space Grotesk'; font-size: 1.8rem; font-weight: 700; display: block; margin-top: 10px; color: #22c55e;">R$ 0,00</span>
-                </div>
-                <div class="metric-card" style="background: #0c0c0c; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px;">
-                    <h3 style="font-size: 0.7rem; color: #666; text-transform: uppercase;">Despesas Totais</h3>
-                    <span id="dash-despesa" style="font-family: 'Space Grotesk'; font-size: 1.8rem; font-weight: 700; display: block; margin-top: 10px; color: #f87171;">R$ 0,00</span>
-                </div>
-                <div class="metric-card" style="background: #0c0c0c; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px;">
-                    <h3 style="font-size: 0.7rem; color: #666; text-transform: uppercase;">Lucro Líquido</h3>
-                    <span id="dash-liquida" style="font-family: 'Space Grotesk'; font-size: 1.8rem; font-weight: 700; display: block; margin-top: 10px; color: #a855f7;">R$ 0,00</span>
-                </div>
-            </div>
+        <div class="dashboard-cards"> <!--Outdoor antes do destino-->
+            <h1>Dashboard - Nome</h1>
 
-            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px;">
-                <div class="card-base" style="background: #0c0c0c; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; text-align: center;">
-                    <h3 style="font-size: 0.8rem; color: #666; text-transform: uppercase; margin-bottom: 20px;">Composição de Saídas</h3>
-                    <div style="height: 250px; position: relative;">
-                        <canvas id="chartPizza"></canvas>
-                    </div>
-                </div>
-                <div class="card-base" style="background: #0c0c0c; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px;">
-                    <h3 style="font-size: 0.8rem; color: #666; text-transform: uppercase; margin-bottom: 20px;">Performance de Vendas</h3>
-                    <div style="height: 250px; position: relative;">
-                        <canvas id="chartLinha"></canvas>
-                    </div>
-                </div>
+            <div class="dashboard-values">
+                <h3>Receita do Mês</h3>
+                <span id="dashboard-monthly-income">R$0.00</span>
+
+                <h3>Despesas do Mês</h3>
+                <span id="dashboard-monthly-expenses">R$0.00</span>
+
+                <h3>Lucro Liquido</h3>
+                <span id="dashboard-net-profit">R$0.00</span>
+
+                <h3>Número de Clientes</h3>
+                <span id="dashboard-clients-value">0</span>
+
             </div>
         </div>
+
+        <div class="dashboard-bottom-row"></div>
+
+        <div class="dashboard-resume-cards"> <!--resumo financeiro-->
+
+            <h3>Resumo das coisa que vai aparecer aqui</h3>
+
+            <div class="dashboard-balance"> <!--saldo atual-->
+
+                <h3>saldo atual</h3>
+                <p>10 kwanzas</p>
+
+            </div>
+
+            <div class="dashboard-percentage-growth"><!--crescimento percentual-->
+
+                <h3>crescimento percentual algo assim</h3>
+                <p>0,2% ao ano</p>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard-recent-activities">
+
+            <h3>Atividades Recentes</h3>
+
+            <!--sei lá o que colocar aqui ainda-->
+
+        </div>
+
+        <!-- essa parte de alertas falta fazer, nela vai bastante js junto com servidor backend-->
+
+        <div class="dashboard-alerts">
+
+            <h3>Alertas</h3>
+
+            <div class="dashboard-drop-in-sales-alert">
+
+                <p>alerta alerta cairam os preços</p>
+
+            </div>
+
+            <div class="dashboard-low-stock">
+
+                <p>alerta alerta baixa quantia de batata doce</p>
+
+            </div>
+
+        </div>
+
     </main>
-    <script src="Javascript/dashboard.js"></script>
+
 </body>
+
 </html>
