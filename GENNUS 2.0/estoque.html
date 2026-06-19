@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque — Gennus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="Css/dashboard.css">
+    <link rel="stylesheet" href="Css/estoque.css">
+</head>
+
+<body>
+    <main class="dashboard-page">
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar-main">
+            <div class="bg-glow"></div>
+            <div class="sidebar-logo">GENNUS</div>
+
+            <details>
+                <summary>Produtos</summary>
+                <a href="produtos.html">Lista de Produtos</a>
+                <a href="estoque.html">Estoque</a>
+            </details>
+
+            <details>
+                <summary>Vendas</summary>
+                <a href="resumo.html">Resumo do Período</a>
+                <a href="renda.html">Renda Bruta / Líquida</a>
+                <a href="vendas.html">Vendas</a>
+                <a href="clientes.html">Clientes</a>
+                <a href="top-itens.html">Top Itens</a>
+            </details>
+
+            <details>
+                <summary>Finanças</summary>
+                <a href="receita.html">Receita</a>
+                <a href="despesas.html">Despesas</a>
+                <a href="lucro.html">Lucro</a>
+                <a href="#">IA Feedback</a>
+            </details>
+
+            <details>
+                <summary>Relatórios</summary>
+                <a href="charts.html">Gráficos</a>
+                <a href="relatorio.html">Relatório</a>
+            </details>
+
+            <details class="config-details">
+                <summary>Configurações</summary>
+                <a href="#">Período de Fechamento</a>
+                <a href="#">Personalizar</a>
+                <a href="#">Dados da Empresa</a>
+            </details>
+
+            <div class="sidebar-user">
+                <div class="perfil-border"></div>
+                <span>Perfil</span>
+                <a href="#">Nome do Usuário</a>
+                <a href="#">Logout</a>
+            </div>
+        </nav>
+
+        <!-- CABEÇALHO -->
+        <div class="est-header">
+            <div>
+                <span class="est-eyebrow">Produtos</span>
+                <h1 class="est-title">Controle de Estoque</h1>
+                <p class="est-subtitle">Situação do inventário e alertas de reposição</p>
+            </div>
+            <button class="btn-export" id="btn-export">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Exportar
+            </button>
+        </div>
+
+        <!-- KPIs -->
+        <div class="est-kpis" id="est-kpis">
+            <div class="kpi-card kpi-total"><span class="kpi-label">Total de Itens</span><span class="kpi-value"
+                    id="kpi-total">—</span><span class="kpi-sub">no catálogo</span></div>
+            <div class="kpi-card kpi-ok"><span class="kpi-label">Estoque OK</span><span class="kpi-value"
+                    id="kpi-ok">—</span><span class="kpi-sub" id="kpi-ok-sub">saudável</span></div>
+            <div class="kpi-card kpi-medio"><span class="kpi-label">Estoque Médio</span><span class="kpi-value"
+                    id="kpi-medio">—</span><span class="kpi-sub">atenção recomendada</span></div>
+            <div class="kpi-card kpi-baixo"><span class="kpi-label">Estoque Baixo</span><span class="kpi-value"
+                    id="kpi-baixo">—</span><span class="kpi-sub">repor em breve</span></div>
+            <div class="kpi-card kpi-esgotado"><span class="kpi-label">Esgotados</span><span class="kpi-value"
+                    id="kpi-esgotado">—</span><span class="kpi-sub">ação imediata</span></div>
+        </div>
+
+        <!-- DISTRIBUIÇÃO -->
+        <div class="est-card dist-card">
+            <div class="est-card-header">
+                <h3>Distribuição do Estoque</h3><span class="est-card-sub">proporção por situação</span>
+            </div>
+            <div class="dist-bar" id="dist-bar"></div>
+            <div class="dist-legend" id="dist-legend"></div>
+        </div>
+
+        <div class="est-main-row">
+
+            <!-- TABELA -->
+            <div class="est-card tabela-card">
+
+                <div class="est-controls">
+                    <div class="search-wrapper">
+                        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.2">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="search-input" class="search-input"
+                            placeholder="Buscar por nome, ID ou categoria…" autocomplete="off">
+                        <button class="search-clear" id="search-clear">✕</button>
+                    </div>
+                    <div class="status-pills" id="status-pills">
+                        <button class="pill active" data-status="todos">Todos</button>
+                        <button class="pill" data-status="ok"><span class="pill-dot dot-ok"></span>OK</button>
+                        <button class="pill" data-status="medio"><span class="pill-dot dot-medio"></span>Médio</button>
+                        <button class="pill" data-status="baixo"><span class="pill-dot dot-baixo"></span>Baixo</button>
+                        <button class="pill" data-status="esgotado"><span
+                                class="pill-dot dot-esgotado"></span>Esgotado</button>
+                    </div>
+                    <select class="select-filtro" id="select-ordem">
+                        <option value="critico">Mais críticos</option>
+                        <option value="nome-asc">Nome A→Z</option>
+                        <option value="estoque-asc">Menor estoque</option>
+                        <option value="estoque-desc">Maior estoque</option>
+                        <option value="valor-desc">Maior valor em estoque</option>
+                    </select>
+                </div>
+
+                <div class="table-topbar">
+                    <span class="table-count" id="table-count">— itens</span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="est-table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Estoque</th>
+                                <th class="ta-r">Capacidade</th>
+                                <th class="ta-r">Situação</th>
+                                <th class="ta-r">Valor em Estoque</th>
+                                <th class="ta-r">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="est-tbody"></tbody>
+                    </table>
+                </div>
+
+                <div class="empty-state" id="empty-state" style="display:none">
+                    <div class="empty-icon">📦</div>
+                    <p class="empty-title">Nenhum item encontrado</p>
+                    <p class="empty-sub">Ajuste os filtros para ver outros resultados.</p>
+                </div>
+
+                <div class="pagination" id="pagination">
+                    <button class="pag-btn" id="pag-prev" disabled>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+                    <div class="pag-pages" id="pag-pages"></div>
+                    <button class="pag-btn" id="pag-next">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ALERTAS DE REPOSIÇÃO -->
+            <div class="est-card alertas-card">
+                <div class="est-card-header">
+                    <h3>Alertas de Reposição</h3><span class="est-card-sub" id="alertas-count">—</span>
+                </div>
+                <div class="alertas-list" id="alertas-list"></div>
+            </div>
+
+        </div>
+
+    </main>
+    <script src="Javascript/estoque.js"></script>
+</body>
+
+</html>
