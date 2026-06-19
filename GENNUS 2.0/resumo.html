@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resumo do Período — Gennus</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
-  <link rel="stylesheet" href="/GENNUS 2.0/Css/dashboard.css">
-  <link rel="stylesheet" href="/GENNUS 2.0/Css/resumo.css">
+  <link rel="stylesheet" href="Css/dashboard.css">
+  <link rel="stylesheet" href="Css/resumo.css">
 </head>
 
 <body>
 
   <main class="dashboard-page">
 
-        <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
     <nav class="sidebar-main">
       <div class="bg-glow"></div>
       <div class="sidebar-logo">GENNUS</div>
 
       <details>
         <summary>Produtos</summary>
-        <a href="/GENNUS 2.0/produtos.html">Lista de Produtos</a>
-        <a href="#">Adicionar Produto</a>
-        <a href="#">Editar / Excluir</a>
+        <a href="produtos.html">Lista de Produtos</a>
+        <a href="estoque.html">Estoque</a>
       </details>
 
       <details>
         <summary>Vendas</summary>
-        <a href="/GENNUS 2.0/resumo.html">Resumo do Período</a>
-        <a href="/GENNUS 2.0/renda.html">Renda Bruta / Líquida</a>
-        <a href="/GENNUS 2.0/top-itens.html">Top Itens</a>
+        <a href="resumo.html">Resumo do Período</a>
+        <a href="renda.html">Renda Bruta / Líquida</a>
+        <a href="top-itens.html">Top Itens</a>
       </details>
 
       <details open>
         <summary>Finanças</summary>
-        <a href="/GENNUS 2.0/receita.html" class="sidebar-link-active">Receita</a>
-        <a href="/GENNUS 2.0/despesas.html">Despesas</a>
-        <a href="/GENNUS 2.0/lucro.html">Lucro</a>
+        <a href="receita.html" class="sidebar-link-active">Receita</a>
+        <a href="despesas.html">Despesas</a>
+        <a href="lucro.html">Lucro</a>
         <a href="#">IA Feedback (SOON)</a>
       </details>
 
       <details>
         <summary>Relatórios</summary>
-        <a href="/GENNUS 2.0/charts.html">Gráficos</a>
-        <a href="#">Relatório</a>
+        <a href="charts.html">Gráficos</a>
+        <a href="relatório.html">Relatório</a>
       </details>
 
       <details class="config-details">
@@ -79,7 +81,7 @@
         <div class="periodo-score" id="periodo-score">
           <span class="score-label">Score do Período</span>
           <span class="score-value" id="score-value">—</span>
-          <span class="score-desc"  id="score-desc">calculando...</span>
+          <span class="score-desc" id="score-desc">calculando...</span>
         </div>
 
         <!-- Filtro de período -->
@@ -149,7 +151,7 @@
           <div class="meta-valores">
             <span class="meta-realizado" id="meta-realizado">—</span>
             <span class="meta-separador">/</span>
-            <span class="meta-alvo"     id="meta-alvo">—</span>
+            <span class="meta-alvo" id="meta-alvo">—</span>
           </div>
           <span class="meta-pct" id="meta-pct">—</span>
         </div>
@@ -272,4 +274,5 @@
   <script src="Javascript/resumo.js"></script>
 
 </body>
+
 </html>

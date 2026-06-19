@@ -1,6 +1,6 @@
 /* ================================================
    REGISTER.JS
-   Localização: /GENNUS 2.0/Javascript/register.js
+   Localização: Javascript/register.js
  
    IMPORTANTE — como funciona a referência de arquivos no JS:
    getElementById, querySelector e afins NÃO usam caminhos de arquivo.
@@ -80,7 +80,7 @@ var modalBody   = document.getElementById('modal-body');
 var progressBar = document.getElementById('read-progress');
 var readHint    = document.getElementById('read-hint');
  
-/* CORREÇÃO: era getElementById('/GENNUS 2.0/use-terms') — errado.
+/* CORREÇÃO: era getElementById('use-terms') — errado.
    getElementById recebe o valor do id do HTML, não um caminho de arquivo.
    O checkbox tem id="use-terms" no register.html, então é só isso: */
 var checkbox = document.getElementById('use-terms');
