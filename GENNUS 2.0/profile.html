@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Perfil — Gennus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- CSS base do projeto (variáveis, reset, sidebar, etc.) -->
+  <link rel="stylesheet" href="/GENNUS 2.0/Css/dashboard.css" />
+  <!-- CSS específico desta página -->
+  <link rel="stylesheet" href="/GENNUS 2.0/Css/profile.css" />
+</head>
+<body>
+ 
+<main class="profile-container">
+ 
+  <!-- Voltar -->
+  <div class="back-button-container">
+    <button type="button" class="btn-back" onclick="history.back()">
+      ← Voltar
+    </button>
+  </div>
+ 
+  <!-- Cabeçalho -->
+  <header class="page-header">
+    <h1>Meu Perfil</h1>
+    <p>Gerencie suas informações pessoais e preferências.</p>
+  </header>
+ 
+  <!-- ──────────────────────────────────────────
+       FOTO DE PERFIL
+  ────────────────────────────────────────── -->
+  <section class="profile-card">
+ 
+    <h2>Foto de Perfil</h2>
+ 
+    <div class="profile-photo-container">
+ 
+      <!-- Foto + overlay de hover -->
+      <div class="profile-photo-wrapper">
+        <img
+          src="../assets/img/default-user.png"
+          alt="Foto de Perfil"
+          class="profile-photo"
+        />
+        <div class="profile-photo-overlay">
+          <span class="photo-overlay-icon">📷</span>
+        </div>
+      </div>
+ 
+      <!-- Info + botões -->
+      <div>
+        <div class="profile-photo-info">
+          <span class="photo-info-label">João Lima</span>
+          <span class="photo-info-hint">JPG, PNG ou WebP · máx. 3 MB</span>
+        </div>
+ 
+        <div class="profile-photo-actions">
+          <input type="file" id="profilePhoto" accept="image/*" />
+          <button type="button" class="btn-photo-change">Alterar Foto</button>
+          <button type="button" class="btn-photo-remove">Remover</button>
+        </div>
+      </div>
+ 
+    </div>
+ 
+  </section>
+ 
+  <!-- ──────────────────────────────────────────
+       DADOS PESSOAIS
+  ────────────────────────────────────────── -->
+  <section class="profile-card">
+ 
+    <h2>Dados Pessoais</h2>
+ 
+    <div class="form-grid">
+ 
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" />
+        <span class="field-error"></span>
+      </div>
+ 
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" />
+        <span class="field-error"></span>
+      </div>
+ 
+      <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000" maxlength="15" />
+        <span class="field-error"></span>
+      </div>
+ 
+    </div>
+ 
+  </section>
+ 
+  <!-- ──────────────────────────────────────────
+       SEGURANÇA
+  ────────────────────────────────────────── -->
+  <section class="profile-card">
+ 
+    <h2>Segurança</h2>
+ 
+    <div class="form-grid">
+ 
+      <div class="form-group">
+        <label for="senhaAtual">Senha Atual</label>
+        <div class="input-password-wrap">
+          <input type="password" id="senhaAtual" placeholder="••••••••" />
+          <button type="button" class="btn-toggle-pass" aria-label="Mostrar senha"></button>
+        </div>
+        <span class="field-error"></span>
+      </div>
+ 
+      <div class="form-group">
+        <label for="novaSenha">Nova Senha</label>
+        <div class="input-password-wrap">
+          <input type="password" id="novaSenha" placeholder="••••••••" />
+          <button type="button" class="btn-toggle-pass" aria-label="Mostrar senha"></button>
+        </div>
+        <!-- Barra de força -->
+        <div class="password-strength">
+          <div class="strength-bars">
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+          </div>
+          <span class="strength-label"></span>
+        </div>
+        <span class="field-error"></span>
+      </div>
+ 
+      <div class="form-group">
+        <label for="confirmarSenha">Confirmar Nova Senha</label>
+        <div class="input-password-wrap">
+          <input type="password" id="confirmarSenha" placeholder="••••••••" />
+          <button type="button" class="btn-toggle-pass" aria-label="Mostrar senha"></button>
+        </div>
+        <span class="field-error"></span>
+      </div>
+ 
+    </div>
+ 
+  </section>
+ 
+  <!-- ──────────────────────────────────────────
+       PREFERÊNCIAS
+  ────────────────────────────────────────── -->
+  <section class="profile-card">
+ 
+    <h2>Preferências</h2>
+ 
+    <div class="form-grid">
+ 
+      <div class="form-group">
+        <label for="tema">Tema do Sistema</label>
+        <div class="select-wrapper">
+          <select id="tema">
+            <option value="dark">Escuro</option>
+            <option value="light">Claro</option>
+          </select>
+        </div>
+      </div>
+ 
+    </div>
+ 
+  </section>
+ 
+  <!-- ──────────────────────────────────────────
+       INFORMAÇÕES DA CONTA
+  ────────────────────────────────────────── -->
+  <section class="profile-card">
+ 
+    <h2>Informações da Conta</h2>
+ 
+    <div class="account-info">
+      <div class="account-info-item">
+        <span class="account-info-item-label">Conta criada em</span>
+        <span class="account-info-item-value">10/06/2026</span>
+      </div>
+      <div class="account-info-item">
+        <span class="account-info-item-label">Último acesso</span>
+        <span class="account-info-item-value">11/06/2026 às 09:15</span>
+      </div>
+    </div>
+ 
+  </section>
+ 
+  <!-- ──────────────────────────────────────────
+       AÇÕES
+  ────────────────────────────────────────── -->
+  <section class="profile-actions">
+    <button type="button" class="btn-cancel">Cancelar</button>
+    <button type="button" class="btn-save">Salvar Alterações</button>
+  </section>
+ 
+</main>
+ 
+<script src="/GENNUS 2.0/Javascript/profile.js"></script>
+</body>
+</html>

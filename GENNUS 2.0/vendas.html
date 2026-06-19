@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendas — Gennus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/GENNUS 2.0/Css/dashboard.css">
+  <link rel="stylesheet" href="/GENNUS 2.0/Css/vendas.css">
+</head>
+
+<body>
+  <main class="dashboard-page">
+
+    <!-- ================================================
+         SIDEBAR
+    ================================================ -->
+    <nav class="sidebar-main">
+      <div class="bg-glow"></div>
+      <div class="sidebar-logo">GENNUS</div>
+
+      <details>
+        <summary>Produtos</summary>
+        <a href="#">Lista de Produtos</a>
+        <a href="#">Adicionar Produto</a>
+        <a href="#">Editar / Excluir</a>
+      </details>
+
+      <details open>
+        <summary>Vendas</summary>
+        <a href="resumo.html">Resumo do Período</a>
+        <a href="renda.html">Renda Bruta / Líquida</a>
+        <a href="venda.html" class="sidebar-link-active">Vendas</a>
+        <a href="#">Top Itens</a>
+      </details>
+
+      <details>
+        <summary>Finanças</summary>
+        <a href="#">Receita</a>
+        <a href="#">Despesas</a>
+        <a href="#">Lucro</a>
+        <a href="#">IA Feedback</a>
+      </details>
+
+      <details>
+        <summary>Relatórios</summary>
+        <a href="charts.html">Gráficos</a>
+        <a href="#">Relatório</a>
+      </details>
+
+      <details class="config-details">
+        <summary>Configurações</summary>
+        <a href="#">Período de Fechamento</a>
+        <a href="#">Personalizar</a>
+        <a href="#">Dados da Empresa</a>
+      </details>
+
+      <div class="sidebar-user">
+        <div class="perfil-border"></div>
+        <span>Perfil</span>
+        <a href="#">Nome do Usuário</a>
+        <a href="#">Logout</a>
+      </div>
+    </nav>
+
+    <!-- ================================================
+         CABEÇALHO
+    ================================================ -->
+    <div class="venda-header">
+      <div class="venda-header-left">
+        <span class="venda-eyebrow">Vendas</span>
+        <h1 class="venda-title">Gestão de Vendas</h1>
+        <p class="venda-subtitle">Histórico completo de pedidos e transações</p>
+      </div>
+
+      <div class="venda-header-right">
+        <button class="btn-export" id="btn-export">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Exportar
+        </button>
+        <div class="period-filter" id="period-filter">
+          <button class="period-btn active" data-period="7d">7 dias</button>
+          <button class="period-btn" data-period="30d">30 dias</button>
+          <button class="period-btn" data-period="90d">3 meses</button>
+          <button class="period-btn" data-period="1y">1 ano</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================
+         KPIs
+    ================================================ -->
+    <div class="venda-kpis" id="venda-kpis">
+      <div class="kpi-card kpi-faturado">
+        <span class="kpi-label">Total Faturado</span>
+        <span class="kpi-value" id="kpi-faturado">—</span>
+        <span class="kpi-delta" id="kpi-faturado-delta"></span>
+      </div>
+      <div class="kpi-card kpi-pedidos">
+        <span class="kpi-label">Pedidos</span>
+        <span class="kpi-value" id="kpi-pedidos">—</span>
+        <span class="kpi-delta" id="kpi-pedidos-delta"></span>
+      </div>
+      <div class="kpi-card kpi-ticket">
+        <span class="kpi-label">Ticket Médio</span>
+        <span class="kpi-value" id="kpi-ticket">—</span>
+        <span class="kpi-delta" id="kpi-ticket-delta"></span>
+      </div>
+      <div class="kpi-card kpi-concluidos">
+        <span class="kpi-label">Concluídos</span>
+        <span class="kpi-value" id="kpi-concluidos">—</span>
+        <span class="kpi-sub">do total de pedidos</span>
+      </div>
+      <div class="kpi-card kpi-cancelados">
+        <span class="kpi-label">Cancelados</span>
+        <span class="kpi-value" id="kpi-cancelados">—</span>
+        <span class="kpi-sub">taxa de cancelamento</span>
+      </div>
+    </div>
+
+    <!-- ================================================
+         CONTROLES: BUSCA + FILTROS
+    ================================================ -->
+    <div class="venda-controls">
+
+      <!-- Busca -->
+      <div class="search-wrapper">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Buscar por pedido, cliente ou produto…"
+          autocomplete="off"
+        >
+        <button class="search-clear" id="search-clear" aria-label="Limpar busca">✕</button>
+      </div>
+
+      <!-- Pills de status -->
+      <div class="status-pills" id="status-pills">
+        <button class="pill active" data-status="todos">Todos</button>
+        <button class="pill" data-status="concluido">
+          <span class="pill-dot dot-verde"></span>Concluído
+        </button>
+        <button class="pill" data-status="pendente">
+          <span class="pill-dot dot-amarelo"></span>Pendente
+        </button>
+        <button class="pill" data-status="processando">
+          <span class="pill-dot dot-azul"></span>Processando
+        </button>
+        <button class="pill" data-status="cancelado">
+          <span class="pill-dot dot-vermelho"></span>Cancelado
+        </button>
+      </div>
+
+      <!-- Filtro de canal -->
+      <select class="select-canal" id="select-canal">
+        <option value="todos">Todos os canais</option>
+        <option value="online">Loja Online</option>
+        <option value="whatsapp">WhatsApp</option>
+        <option value="presencial">Presencial</option>
+        <option value="marketplace">Marketplace</option>
+      </select>
+
+    </div>
+
+    <!-- ================================================
+         TABELA DE VENDAS
+    ================================================ -->
+    <div class="venda-table-card">
+
+      <!-- Info da listagem -->
+      <div class="table-topbar">
+        <span class="table-count" id="table-count">— pedidos</span>
+        <div class="table-sort" id="table-sort">
+          <button class="sort-btn active" data-sort="data" data-dir="desc">
+            Data <span class="sort-arrow">↓</span>
+          </button>
+          <button class="sort-btn" data-sort="valor" data-dir="desc">
+            Valor <span class="sort-arrow">↕</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="venda-table" id="venda-table">
+          <thead>
+            <tr>
+              <th class="col-pedido">Pedido</th>
+              <th class="col-cliente">Cliente</th>
+              <th class="col-produto">Produto(s)</th>
+              <th class="col-canal">Canal</th>
+              <th class="col-valor">Valor</th>
+              <th class="col-status">Status</th>
+              <th class="col-data">Data</th>
+              <th class="col-expand"></th>
+            </tr>
+          </thead>
+          <tbody id="venda-tbody">
+            <!-- Populado pelo JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Estado vazio -->
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-icon">📭</div>
+        <p class="empty-title">Nenhuma venda encontrada</p>
+        <p class="empty-sub">Tente ajustar os filtros ou o período selecionado.</p>
+      </div>
+
+      <!-- Paginação -->
+      <div class="pagination" id="pagination">
+        <button class="pag-btn" id="pag-prev" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="pag-pages" id="pag-pages">
+          <!-- Números gerados pelo JS -->
+        </div>
+        <button class="pag-btn" id="pag-next">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+    </div>
+    <!-- fim .venda-table-card -->
+
+  </main>
+
+  <script src="/GENNUS 2.0/Javascript/vendas.js"></script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos — Gennus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="/GENNUS 2.0/Css/dashboard.css">
+  <link rel="stylesheet" href="/GENNUS 2.0/Css/produtos.css">
+</head>
+
+<body>
+  <main class="dashboard-page">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar-main">
+      <div class="bg-glow"></div>
+      <div class="sidebar-logo">GENNUS</div>
+
+      <details open>
+        <summary>Produtos</summary>
+        <a href="produtos.html" class="sidebar-link-active">Lista de Produtos</a>
+        <a href="#">Adicionar Produto</a>
+        <a href="#">Editar / Excluir</a>
+      </details>
+
+      <details>
+        <summary>Vendas</summary>
+        <a href="resumo.html">Resumo do Período</a>
+        <a href="renda.html">Renda Bruta / Líquida</a>
+        <a href="venda.html">Vendas</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="#">Top Itens</a>
+      </details>
+
+      <details>
+        <summary>Finanças</summary>
+        <a href="#">Receita</a>
+        <a href="#">Despesas</a>
+        <a href="#">Lucro</a>
+        <a href="#">IA Feedback</a>
+      </details>
+
+      <details>
+        <summary>Relatórios</summary>
+        <a href="charts.html">Gráficos</a>
+        <a href="#">Relatório</a>
+      </details>
+
+      <details class="config-details">
+        <summary>Configurações</summary>
+        <a href="#">Período de Fechamento</a>
+        <a href="#">Personalizar</a>
+        <a href="#">Dados da Empresa</a>
+      </details>
+
+      <div class="sidebar-user">
+        <div class="perfil-border"></div>
+        <span>Perfil</span>
+        <a href="#">Nome do Usuário</a>
+        <a href="#">Logout</a>
+      </div>
+    </nav>
+
+    <!-- CABEÇALHO -->
+    <div class="prd-header">
+      <div class="prd-header-left">
+        <span class="prd-eyebrow">Produtos</span>
+        <h1 class="prd-title">Lista de Produtos</h1>
+        <p class="prd-subtitle">Catálogo completo com EAN, estoque e preços</p>
+      </div>
+      <div class="prd-header-right">
+        <button class="btn-novo-produto" id="btn-novo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          Novo Produto
+        </button>
+        <button class="btn-export" id="btn-export">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Exportar
+        </button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="prd-kpis">
+      <div class="kpi-card kpi-total">
+        <span class="kpi-label">Total de Produtos</span>
+        <span class="kpi-value" id="kpi-total">—</span>
+        <span class="kpi-sub">no catálogo</span>
+      </div>
+      <div class="kpi-card kpi-ativos">
+        <span class="kpi-label">Ativos</span>
+        <span class="kpi-value" id="kpi-ativos">—</span>
+        <span class="kpi-sub" id="kpi-ativos-sub">disponíveis</span>
+      </div>
+      <div class="kpi-card kpi-baixo">
+        <span class="kpi-label">Estoque Baixo</span>
+        <span class="kpi-value" id="kpi-baixo">—</span>
+        <span class="kpi-sub">abaixo do mínimo</span>
+      </div>
+      <div class="kpi-card kpi-valor">
+        <span class="kpi-label">Valor em Estoque</span>
+        <span class="kpi-value" id="kpi-valor">—</span>
+        <span class="kpi-sub">custo total</span>
+      </div>
+      <div class="kpi-card kpi-categorias">
+        <span class="kpi-label">Categorias</span>
+        <span class="kpi-value" id="kpi-categorias">—</span>
+        <span class="kpi-sub">segmentos ativos</span>
+      </div>
+    </div>
+
+    <!-- CONTROLES -->
+    <div class="prd-controls">
+
+      <div class="search-wrapper">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Buscar por nome, ID, EAN ou descrição…"
+          autocomplete="off">
+        <button class="search-clear" id="search-clear">✕</button>
+      </div>
+
+      <!-- Pills de status -->
+      <div class="status-pills" id="status-pills">
+        <button class="pill active" data-status="todos">Todos</button>
+        <button class="pill" data-status="ativo">
+          <span class="pill-dot dot-verde"></span>Ativo
+        </button>
+        <button class="pill" data-status="baixo-estoque">
+          <span class="pill-dot dot-amarelo"></span>Estoque Baixo
+        </button>
+        <button class="pill" data-status="esgotado">
+          <span class="pill-dot dot-vermelho"></span>Esgotado
+        </button>
+        <button class="pill" data-status="inativo">
+          <span class="pill-dot dot-inativo"></span>Inativo
+        </button>
+      </div>
+
+      <!-- Filtro de categoria -->
+      <select class="select-filtro" id="select-categoria">
+        <option value="todos">Todas as categorias</option>
+        <option value="Eletrônicos">Eletrônicos</option>
+        <option value="Vestuário">Vestuário</option>
+        <option value="Alimentos">Alimentos</option>
+        <option value="Cosméticos">Cosméticos</option>
+        <option value="Casa">Casa</option>
+        <option value="Ferramentas">Ferramentas</option>
+        <option value="Esportes">Esportes</option>
+        <option value="Outros">Outros</option>
+      </select>
+
+      <!-- Ordenação -->
+      <select class="select-filtro" id="select-ordem">
+        <option value="nome-asc">Nome A→Z</option>
+        <option value="nome-desc">Nome Z→A</option>
+        <option value="preco-desc">Maior Preço</option>
+        <option value="preco-asc">Menor Preço</option>
+        <option value="estoque-asc">Menor Estoque</option>
+        <option value="estoque-desc">Maior Estoque</option>
+        <option value="recente">Mais Recentes</option>
+      </select>
+
+    </div>
+
+    <!-- TABELA -->
+    <div class="prd-table-card">
+
+      <div class="table-topbar">
+        <span class="table-count" id="table-count">— produtos</span>
+        <!-- Chips de categoria com contagem -->
+        <div class="cat-chips" id="cat-chips"></div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="prd-table">
+          <thead>
+            <tr>
+              <th class="col-produto">Produto</th>
+              <th class="col-ean">EAN / JAN</th>
+              <th class="col-descricao">Descrição</th>
+              <th class="col-categoria">Categoria</th>
+              <th class="col-preco">Preço Venda</th>
+              <th class="col-margem">Margem</th>
+              <th class="col-estoque">Estoque</th>
+              <th class="col-status">Status</th>
+              <th class="col-expand"></th>
+            </tr>
+          </thead>
+          <tbody id="prd-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-icon">📦</div>
+        <p class="empty-title">Nenhum produto encontrado</p>
+        <p class="empty-sub">Tente ajustar os filtros ou cadastre um novo produto.</p>
+      </div>
+
+      <div class="pagination" id="pagination">
+        <button class="pag-btn" id="pag-prev" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <div class="pag-pages" id="pag-pages"></div>
+        <button class="pag-btn" id="pag-next">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- MODAL NOVO PRODUTO -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal" id="modal-produto">
+
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title">Novo Produto</h2>
+            <p class="modal-subtitle">Preencha os dados do produto</p>
+          </div>
+          <button class="modal-close" id="modal-close">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label class="form-label">Nome do Produto <span class="required">*</span></label>
+              <input type="text" id="f-nome" class="form-input" placeholder="Ex: Camiseta Básica Preta M">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">EAN / JAN Code</label>
+              <div class="input-with-btn">
+                <input type="text" id="f-ean" class="form-input" placeholder="0000000000000" maxlength="13">
+                <button class="btn-gerar-ean" id="btn-gerar-ean" type="button">Gerar</button>
+              </div>
+              <span class="form-hint">Código de barras EAN-13 (13 dígitos)</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Categoria <span class="required">*</span></label>
+              <select id="f-categoria" class="form-input form-select">
+                <option value="">Selecione uma categoria</option>
+                <option>Eletrônicos</option>
+                <option>Vestuário</option>
+                <option>Alimentos</option>
+                <option>Cosméticos</option>
+                <option>Casa</option>
+                <option>Ferramentas</option>
+                <option>Esportes</option>
+                <option>Outros</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label class="form-label">Descrição <span class="required">*</span></label>
+              <textarea id="f-descricao" class="form-input form-textarea"
+                placeholder="Descreva o produto detalhadamente…" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Preço de Custo <span class="required">*</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">R$</span>
+                <input type="number" id="f-custo" class="form-input input-with-prefix" placeholder="0,00" min="0"
+                  step="0.01">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preço de Venda <span class="required">*</span></label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">R$</span>
+                <input type="number" id="f-venda" class="form-input input-with-prefix" placeholder="0,00" min="0"
+                  step="0.01">
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview de margem calculada automaticamente -->
+          <div class="margem-preview" id="margem-preview" style="display:none">
+            <span class="margem-preview-label">Margem calculada:</span>
+            <span class="margem-preview-val" id="margem-preview-val">—</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Quantidade em Estoque <span class="required">*</span></label>
+              <input type="number" id="f-estoque" class="form-input" placeholder="0" min="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estoque Mínimo</label>
+              <input type="number" id="f-estoque-min" class="form-input" placeholder="Ex: 10" min="0">
+              <span class="form-hint">Alerta quando estoque ficar abaixo deste valor</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Unidade</label>
+              <select id="f-unidade" class="form-input form-select">
+                <option value="un">Unidade (un)</option>
+                <option value="kg">Quilograma (kg)</option>
+                <option value="g">Grama (g)</option>
+                <option value="l">Litro (l)</option>
+                <option value="m">Metro (m)</option>
+                <option value="cx">Caixa (cx)</option>
+                <option value="pc">Peça (pc)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select id="f-status" class="form-input form-select">
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label class="form-label">Observações Internas</label>
+              <textarea id="f-obs" class="form-input form-textarea" placeholder="Anotações internas sobre o produto…"
+                rows="2"></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <span class="modal-required-note"><span class="required">*</span> campos obrigatórios</span>
+          <div class="modal-actions">
+            <button class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+            <button class="btn-salvar" id="btn-salvar">Salvar Produto</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/GENNUS 2.0/Javascript/produtos.js"></script>
+</body>
+
+</html>

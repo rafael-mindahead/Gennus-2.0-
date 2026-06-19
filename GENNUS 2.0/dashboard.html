@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gennus</title>
+
+    <link rel="stylesheet" href="/GENNUS 2.0/Css/dashboard.css"> <!--pode fazer o arquivo css e colocar ai-->
+
+</head>
+
+<body>
+
+    <!-- só avisando que essa porra ta desorganizada pra caralho, outra hora nois organiza melhor, só pra já ter pronto algumas estruturas-->
+
+    <main class="dashboard-page">
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar-main">
+            <div class="bg-glow"></div>
+            <div class="sidebar-logo">GENNUS</div>
+
+            <details>
+                <summary>Produtos</summary>
+                <a href="/GENNUS 2.0/produtos.html">Lista de Produtos</a>
+                <a href="#">Adicionar Produto</a>
+                <a href="#">Editar / Excluir</a>
+            </details>
+
+            <details>
+                <summary>Vendas</summary>
+                <a href="/GENNUS 2.0/resumo.html">Resumo do Período</a>
+                <a href="/GENNUS 2.0/renda.html">Renda Bruta / Líquida</a>
+                <a href="/GENNUS 2.0/top-itens.html">Top Itens</a>
+            </details>
+
+            <details open>
+                <summary>Finanças</summary>
+                <a href="/GENNUS 2.0/receita.html" class="sidebar-link-active">Receita</a>
+                <a href="/GENNUS 2.0/despesas.html">Despesas</a>
+                <a href="/GENNUS 2.0/lucro.html">Lucro</a>
+                <a href="#">IA Feedback (SOON)</a>
+            </details>
+
+            <details>
+                <summary>Relatórios</summary>
+                <a href="/GENNUS 2.0/charts.html">Gráficos</a>
+                <a href="#">Relatório</a>
+            </details>
+
+            <details class="config-details">
+                <summary>Configurações</summary>
+                <a href="#">Período de Fechamento</a>
+                <a href="#">Personalizar</a>
+                <a href="#">Dados da Empresa</a>
+            </details>
+
+            <div class="sidebar-user">
+                <div class="perfil-border"></div>
+                <span>Perfil</span>
+                <a href="profile.html">Nome do Usuário</a>
+                <a href="#">Logout</a>
+            </div>
+        </nav>
+
+        <div class="dashboard-cards"> <!--Outdoor antes do destino-->
+            <h1>Dashboard - Nome</h1>
+
+            <div class="dashboard-values">
+                <h3>Receita do Mês</h3>
+                <span id="dashboard-monthly-income">R$0.00</span>
+
+                <h3>Despesas do Mês</h3>
+                <span id="dashboard-monthly-expenses">R$0.00</span>
+
+                <h3>Lucro Liquido</h3>
+                <span id="dashboard-net-profit">R$0.00</span>
+
+                <h3>Número de Clientes</h3>
+                <span id="dashboard-clients-value">0</span>
+
+            </div>
+        </div>
+
+        <div class="dashboard-bottom-row"></div>
+
+        <div class="dashboard-resume-cards"> <!--resumo financeiro-->
+
+            <h3>Resumo das coisa que vai aparecer aqui</h3>
+
+            <div class="dashboard-balance"> <!--saldo atual-->
+
+                <h3>saldo atual</h3>
+                <p>10 kwanzas</p>
+
+            </div>
+
+            <div class="dashboard-percentage-growth"><!--crescimento percentual-->
+
+                <h3>crescimento percentual algo assim</h3>
+                <p>0,2% ao ano</p>
+
+            </div>
+
+        </div>
+
+        <div class="dashboard-recent-activities">
+
+            <h3>Atividades Recentes</h3>
+
+            <!--sei lá o que colocar aqui ainda-->
+
+        </div>
+
+        <!-- essa parte de alertas falta fazer, nela vai bastante js junto com servidor backend-->
+
+        <div class="dashboard-alerts">
+
+            <h3>Alertas</h3>
+
+            <div class="dashboard-drop-in-sales-alert">
+
+                <p>alerta alerta cairam os preços</p>
+
+            </div>
+
+            <div class="dashboard-low-stock">
+
+                <p>alerta alerta baixa quantia de batata doce</p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

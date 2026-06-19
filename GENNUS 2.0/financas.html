@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gennus - Despesas</title>
+    <link rel="stylesheet" href="Css/financas.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/gennus-favicon-A.svg">
+</head>
+
+<body>
+    <main class="dashboard-page">
+        <!-- SIDEBAR -->
+        <nav class="sidebar-main">
+            <div class="bg-glow"></div>
+            <div class="sidebar-logo">GENNUS</div>
+
+            <details>
+                <summary>Produtos</summary>
+                <a href="/GENNUS 2.0/produtos.html">Lista de Produtos</a>
+                <a href="#">Adicionar Produto</a>
+                <a href="#">Editar / Excluir</a>
+            </details>
+
+            <details>
+                <summary>Vendas</summary>
+                <a href="/GENNUS 2.0/resumo.html">Resumo do Período</a>
+                <a href="/GENNUS 2.0/renda.html">Renda Bruta / Líquida</a>
+                <a href="/GENNUS 2.0/top-itens.html">Top Itens</a>
+            </details>
+
+            <details open>
+                <summary>Finanças</summary>
+                <a href="/GENNUS 2.0/receita.html" class="sidebar-link-active">Receita</a>
+                <a href="/GENNUS 2.0/despesas.html">Despesas</a>
+                <a href="/GENNUS 2.0/lucro.html">Lucro</a>
+                <a href="#">IA Feedback (SOON)</a>
+            </details>
+
+            <details>
+                <summary>Relatórios</summary>
+                <a href="/GENNUS 2.0/charts.html">Gráficos</a>
+                <a href="#">Relatório</a>
+            </details>
+
+            <details class="config-details">
+                <summary>Configurações</summary>
+                <a href="#">Período de Fechamento</a>
+                <a href="#">Personalizar</a>
+                <a href="#">Dados da Empresa</a>
+            </details>
+
+            <div class="sidebar-user">
+                <div class="perfil-border"></div>
+                <span>Perfil</span>
+                <a href="profile.html">Nome do Usuário</a>
+                <a href="#">Logout</a>
+            </div>
+        </nav>
+
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h1>Gestão de Despesas</h1>
+                <p style="color: var(--texto-muted);">Visualize custos automáticos e cadastre gastos manuais.</p>
+            </div>
+
+            <section class="card-base">
+                <h3>Cadastrar Novo Gasto (Luz, Aluguel, etc.)</h3>
+                <form id="gasto-form">
+                    <input type="hidden" id="gasto-id">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Descrição</label>
+                            <input type="text" id="gasto-desc" placeholder="Ex: Conta de Luz" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Valor (R$)</label>
+                            <input type="number" id="gasto-valor" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>nome da mae</label>
+                        <input type="text" id="nomeMae" required>
+                    </div>
+                    <button type="submit" id="btn-salvar-gasto" style="margin-top: 20px;">Salvar Gasto</button>
+                </form>
+            </section>
+
+            <section class="card-base">
+                <h3>Lista de Despesas Totais</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Origem/Descrição</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-despesas-total"></tbody>
+                    <tfoot>
+                        <tr style="font-weight: bold; background: rgba(255,255,255,0.05);">
+                            <td colspan="2">TOTAL DE DESPESAS</td>
+                            <td id="total-geral-despesas" class="txt-vermelho">R$ 0,00</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </div>
+    </main>
+    <script src="Javascript/financas.js"></script>
+</body>
+
+</html>
