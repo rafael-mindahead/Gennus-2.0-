@@ -1,6 +1,6 @@
 /* ================================================
    top-itens.css — Top Itens — Gennus
-<<<<<<< HEAD
+
    Complementa dashboard.css
 ================================================ */
 
@@ -470,12 +470,12 @@ html, body {
 .kpi-c4 .kpi-value { color: var(--amarelo); }
 
 .kpi-delta { font-size: 0.73rem; font-weight: 600; }
->>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
+
 .kpi-delta.pos { color: var(--verde); }
 .kpi-delta.neg { color: var(--vermelho); }
 .kpi-sub { font-size: 0.7rem; color: #444; }
 
-<<<<<<< HEAD
+
 /* ------------------------------------------------ CARD BASE */
 .ti-card {
   background: var(--bg-surface); border: 1px solid var(--borda); border-radius: 16px;
@@ -954,5 +954,5 @@ html, body {
   .kpis-row { grid-template-columns: 1fr; }
   .period-btn { padding: 7px 8px; font-size: 0.65rem; }
   .page-content { padding: 16px; }
->>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
+
 }

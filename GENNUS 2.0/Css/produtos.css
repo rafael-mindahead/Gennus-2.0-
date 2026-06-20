@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /* ================================================
    produtos.css — Lista de Produtos — Gennus
    Complementa dashboard.css.
@@ -482,5 +482,5 @@ td { padding: 12px; font-size: 0.85rem; border-bottom: 1px solid var(--borda); }
 .input-group select:focus {
     border-color: var(--roxo);
     outline: none;
->>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
+
 }

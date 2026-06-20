@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /* ================================================
    venda.css — Gestão de Vendas — Gennus
    Complementa dashboard.css.
@@ -748,4 +748,4 @@ table { width: 100%; border-collapse: collapse; }
 th { text-align: left; font-size: 0.7rem; color: var(--texto-muted); text-transform: uppercase; padding: 12px; border-bottom: 1px solid var(--borda); }
 td { padding: 14px; font-size: 0.85rem; border-bottom: 1px solid var(--borda); color: #eee; }
 tr:last-child td { border-bottom: none; }
->>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
+

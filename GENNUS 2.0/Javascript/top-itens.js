@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /**
  * top-itens.js — Top Itens — Gennus
  * Ranking de produtos mais e menos vendidos, por período.
@@ -489,4 +489,4 @@ document.getElementById('searchInput').addEventListener('input', e => {
 buildChart(currentTab, currentPeriod);
 buildRanking(currentTab, currentPeriod);
 buildTable();
->>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
+
