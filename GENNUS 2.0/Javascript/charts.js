@@ -408,4 +408,9 @@ document.addEventListener('DOMContentLoaded', () => {
   buildAll('7d');     // carrega com o período padrão
   initPeriodFilter(); // ativa os botões
 });
+<<<<<<< HEAD
  
+//huhu
+=======
+ 
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7

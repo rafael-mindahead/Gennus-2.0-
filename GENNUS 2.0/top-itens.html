@@ -1,5 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<<<<<<< HEAD
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Itens — Gennus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="Css/dashboard.css">
+  <link rel="stylesheet" href="Css/top-itens.css">
+</head>
+
+<body>
+
+  <main class="dashboard-page">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar-main">
+      <div class="bg-glow"></div>
+      <div class="sidebar-logo">GENNUS</div>
+
+      <details>
+        <summary>Produtos</summary>
+        <a href="produtos.html">Lista de Produtos</a>
+        <a href="estoque.html">Estoque</a>
+      </details>
+
+      <details open>
+        <summary>Vendas</summary>
+        <a href="resumo.html">Resumo do Período</a>
+        <a href="renda.html">Renda Bruta / Líquida</a>
+        <a href="vendas.html">Vendas</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="top-itens.html" class="sidebar-link-active">Top Itens</a>
+      </details>
+
+      <details>
+        <summary>Finanças</summary>
+        <a href="receita.html">Receita</a>
+        <a href="despesas.html">Despesas</a>
+        <a href="lucro.html">Lucro</a>
+        <a href="#">IA Feedback</a>
+      </details>
+
+      <details>
+        <summary>Relatórios</summary>
+        <a href="charts.html">Gráficos</a>
+        <a href="relatorio.html">Relatório</a>
+      </details>
+
+      <details class="config-details">
+        <summary>Configurações</summary>
+        <a href="#">Período de Fechamento</a>
+        <a href="#">Personalizar</a>
+        <a href="#">Dados da Empresa</a>
+      </details>
+
+      <div class="sidebar-user">
+        <div class="perfil-border"></div>
+        <span>Perfil</span>
+        <a href="profile.html">Nome do Usuário</a>
+        <a href="#">Logout</a>
+      </div>
+    </nav>
+
+    <!-- CABEÇALHO -->
+    <div class="ti-header">
+      <div class="ti-header-left">
+        <span class="ti-eyebrow">Vendas</span>
+        <h1 class="ti-title">Top Itens</h1>
+        <p class="ti-subtitle">Ranking de produtos por volume de vendas</p>
+      </div>
+
+      <div class="period-filter" id="period-filter">
+        <button class="period-btn active" data-period="7d">7 dias</button>
+        <button class="period-btn" data-period="30d">30 dias</button>
+        <button class="period-btn" data-period="90d">3 meses</button>
+        <button class="period-btn" data-period="1y">1 ano</button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="ti-kpis" id="ti-kpis">
+      <div class="kpi-card kpi-unidades">
+        <span class="kpi-label">Unidades Vendidas</span>
+        <span class="kpi-value" id="kpi-unidades">—</span>
+        <span class="kpi-delta" id="kpi-unidades-delta"></span>
+      </div>
+      <div class="kpi-card kpi-campeao">
+        <span class="kpi-label">Produto Campeão</span>
+        <span class="kpi-value kpi-value-sm" id="kpi-campeao">—</span>
+        <span class="kpi-sub" id="kpi-campeao-sub">—</span>
+      </div>
+      <div class="kpi-card kpi-parado">
+        <span class="kpi-label">Item com Menor Saída</span>
+        <span class="kpi-value kpi-value-sm" id="kpi-parado">—</span>
+        <span class="kpi-sub" id="kpi-parado-sub">—</span>
+      </div>
+      <div class="kpi-card kpi-giro">
+        <span class="kpi-label">Giro Médio</span>
+        <span class="kpi-value" id="kpi-giro">—</span>
+        <span class="kpi-sub">unid./dia por SKU</span>
+      </div>
+    </div>
+
+    <!-- RANKINGS: mais vendidos / menos vendidos -->
+    <div class="ti-main-row">
+
+      <div class="ti-card card-top">
+        <div class="ti-card-header">
+          <div>
+            <h3 class="ti-card-title">Mais Vendidos</h3>
+            <p class="ti-card-subtitle">Top 8 em volume no período</p>
+          </div>
+          <span class="ti-badge badge-verde">▲ alta</span>
+        </div>
+        <ol class="rank-list" id="rank-top"></ol>
+      </div>
+
+      <div class="ti-card card-bottom">
+        <div class="ti-card-header">
+          <div>
+            <h3 class="ti-card-title">Menos Vendidos</h3>
+            <p class="ti-card-subtitle">8 itens com menor saída</p>
+          </div>
+          <span class="ti-badge badge-vermelho">▼ baixa</span>
+        </div>
+        <ol class="rank-list" id="rank-bottom"></ol>
+      </div>
+
+    </div>
+
+    <!-- TABELA COMPLETA -->
+    <div class="ti-card card-tabela">
+      <div class="ti-card-header">
+        <div>
+          <h3 class="ti-card-title">Desempenho por Produto</h3>
+          <p class="ti-card-subtitle">Visão completa de vendas, estoque e giro</p>
+        </div>
+      </div>
+
+      <div class="tabela-wrapper">
+        <table class="ti-table" id="ti-table">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Categoria</th>
+              <th>Unid.</th>
+              <th>Receita</th>
+              <th>Estoque</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="ti-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="Javascript/top-itens.js"></script>
+
+</body>
+
+=======
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -288,4 +457,5 @@
 
 <script src="/GENNUS 2.0/Javascript/top-itens.js"></script>
 </body>
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
 </html>

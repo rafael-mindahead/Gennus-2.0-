@@ -1,5 +1,360 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<<<<<<< HEAD
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes - Gennus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="Css/dashboard.css">
+  <link rel="stylesheet" href="Css/clientes.css">
+</head>
+
+<body>
+  <main class="dashboard-page">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar-main">
+      <div class="bg-glow"></div>
+      <div class="sidebar-logo">GENNUS</div>
+
+      <details>
+        <summary>Produtos</summary>
+        <a href="produtos.html">Lista de Produtos</a>
+        <a href="estoque.html">Estoque</a>
+      </details>
+
+      <details open>
+        <summary>Vendas</summary>
+        <a href="resumo.html">Resumo do Período</a>
+        <a href="renda.html">Renda Bruta / Líquida</a>
+        <a href="vendas.html">Vendas</a>
+        <a href="clientes.html" class="sidebar-link-active">Clientes</a>
+        <a href="top-itens.html">Top Itens</a>
+      </details>
+
+      <details>
+        <summary>Finanças</summary>
+        <a href="receita.html">Receita</a>
+        <a href="despesas.html">Despesas</a>
+        <a href="lucro.html">Lucro</a>
+        <a href="#">IA Feedback</a>
+      </details>
+
+      <details>
+        <summary>Relatórios</summary>
+        <a href="charts.html">Gráficos</a>
+        <a href="relatorio.html">Relatório</a>
+      </details>
+
+      <details class="config-details">
+        <summary>Configurações</summary>
+        <a href="#">Período de Fechamento</a>
+        <a href="#">Personalizar</a>
+        <a href="#">Dados da Empresa</a>
+      </details>
+
+      <div class="sidebar-user">
+        <div class="perfil-border"></div>
+        <span>Perfil</span>
+        <a href="profile.html">Nome do Usuário</a>
+        <a href="#">Logout</a>
+      </div>
+    </nav>
+
+    <!-- CABEÇALHO -->
+    <div class="cli-header">
+      <div class="cli-header-left">
+        <span class="cli-eyebrow">Vendas</span>
+        <h1 class="cli-title">Clientes</h1>
+        <p class="cli-subtitle">Base completa — pessoas físicas e jurídicas, com histórico e fidelidade</p>
+      </div>
+      <div class="cli-header-right">
+        <button class="btn-novo-cliente" id="btn-novo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          Novo Cliente
+        </button>
+        <button class="btn-export" id="btn-export">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Exportar
+        </button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="cli-kpis">
+      <div class="kpi-card kpi-total">
+        <span class="kpi-label">Total de Clientes</span>
+        <span class="kpi-value" id="kpi-total">—</span>
+        <span class="kpi-sub" id="kpi-total-sub">cadastrados</span>
+      </div>
+      <div class="kpi-card kpi-ativos">
+        <span class="kpi-label">Clientes Ativos</span>
+        <span class="kpi-value" id="kpi-ativos">—</span>
+        <span class="kpi-sub">compraram nos últimos 180 dias</span>
+      </div>
+      <div class="kpi-card kpi-novos">
+        <span class="kpi-label">Novos (30 dias)</span>
+        <span class="kpi-value" id="kpi-novos">—</span>
+        <span class="kpi-sub">cadastros recentes</span>
+      </div>
+      <div class="kpi-card kpi-ltv">
+        <span class="kpi-label">LTV Médio</span>
+        <span class="kpi-value" id="kpi-ltv">—</span>
+        <span class="kpi-sub">valor médio por cliente</span>
+      </div>
+      <div class="kpi-card kpi-pj">
+        <span class="kpi-label">Pessoa Jurídica</span>
+        <span class="kpi-value" id="kpi-pj">—</span>
+        <span class="kpi-sub" id="kpi-pj-sub">da base de clientes</span>
+      </div>
+    </div>
+
+    <!-- CONTROLES -->
+    <div class="cli-controls">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="text" id="search-input" class="search-input"
+          placeholder="Buscar por nome, documento, e-mail ou telefone…" autocomplete="off">
+        <button class="search-clear" id="search-clear">✕</button>
+      </div>
+
+      <div class="tier-pills" id="tier-pills">
+        <button class="pill active" data-tier="todos">Todos</button>
+        <button class="pill" data-tier="vip"><span class="pill-dot dot-vip"></span>VIP</button>
+        <button class="pill" data-tier="fiel"><span class="pill-dot dot-fiel"></span>Fiel</button>
+        <button class="pill" data-tier="regular"><span class="pill-dot dot-regular"></span>Regular</button>
+        <button class="pill" data-tier="novo"><span class="pill-dot dot-novo"></span>Novo</button>
+        <button class="pill" data-tier="inativo"><span class="pill-dot dot-inativo"></span>Inativo</button>
+      </div>
+
+      <select class="select-filtro" id="select-tipo">
+        <option value="todos">PF e PJ</option>
+        <option value="PF">Pessoa Física</option>
+        <option value="PJ">Pessoa Jurídica</option>
+      </select>
+
+      <select class="select-filtro" id="select-ordem">
+        <option value="recente">Mais recentes</option>
+        <option value="ltv-desc">Maior LTV</option>
+        <option value="pedidos-desc">Mais pedidos</option>
+        <option value="nome-asc">Nome A→Z</option>
+      </select>
+    </div>
+
+    <!-- TABELA -->
+    <div class="cli-table-card">
+
+      <div class="table-topbar">
+        <span class="table-count" id="table-count">— clientes</span>
+        <div class="tier-resumo" id="tier-resumo"></div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="cli-table">
+          <thead>
+            <tr>
+              <th class="col-cliente">Cliente</th>
+              <th class="col-doc">Documento</th>
+              <th class="col-contato">Contato</th>
+              <th class="col-tier">Tier</th>
+              <th class="col-pedidos">Pedidos</th>
+              <th class="col-ltv">LTV Total</th>
+              <th class="col-ultimo">Último Pedido</th>
+              <th class="col-expand"></th>
+            </tr>
+          </thead>
+          <tbody id="cli-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-icon">👤</div>
+        <p class="empty-title">Nenhum cliente encontrado</p>
+        <p class="empty-sub">Ajuste os filtros ou cadastre um novo cliente.</p>
+      </div>
+
+      <div class="pagination" id="pagination">
+        <button class="pag-btn" id="pag-prev" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <div class="pag-pages" id="pag-pages"></div>
+        <button class="pag-btn" id="pag-next">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- MODAL NOVO CLIENTE -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal">
+
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title">Novo Cliente</h2>
+            <p class="modal-subtitle">Preencha os dados do cadastro</p>
+          </div>
+          <button class="modal-close" id="modal-close">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <!-- Toggle Pessoa Física / Jurídica -->
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label class="form-label">Tipo de Cliente</label>
+              <div class="tipo-toggle" id="tipo-toggle">
+                <button type="button" class="tipo-btn active" data-tipo="PF">Pessoa Física</button>
+                <button type="button" class="tipo-btn" data-tipo="PJ">Pessoa Jurídica</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label class="form-label" id="label-nome">Nome Completo <span class="required">*</span></label>
+              <input type="text" id="f-nome" class="form-input" placeholder="Ex: João da Silva">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" id="label-doc">CPF <span class="required">*</span></label>
+              <input type="text" id="f-doc" class="form-input" placeholder="000.000.000-00" maxlength="18">
+            </div>
+            <div class="form-group">
+              <label class="form-label" id="label-data">Data de Nascimento</label>
+              <input type="text" id="f-data" class="form-input" placeholder="DD/MM/AAAA" maxlength="10">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">E-mail</label>
+              <input type="email" id="f-email" class="form-input" placeholder="email@exemplo.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telefone / WhatsApp</label>
+              <input type="text" id="f-telefone" class="form-input" placeholder="(00) 00000-0000" maxlength="15">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label class="form-label">Endereço</label>
+              <input type="text" id="f-endereco" class="form-input" placeholder="Rua, número, bairro">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Cidade</label>
+              <input type="text" id="f-cidade" class="form-input" placeholder="Cidade">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estado</label>
+              <select id="f-estado" class="form-input form-select">
+                <option value="">Selecione</option>
+                <option>AC</option>
+                <option>AL</option>
+                <option>AP</option>
+                <option>AM</option>
+                <option>BA</option>
+                <option>CE</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>GO</option>
+                <option>MA</option>
+                <option>MT</option>
+                <option>MS</option>
+                <option>MG</option>
+                <option>PA</option>
+                <option>PB</option>
+                <option>PR</option>
+                <option>PE</option>
+                <option>PI</option>
+                <option>RJ</option>
+                <option>RN</option>
+                <option>RS</option>
+                <option>RO</option>
+                <option>RR</option>
+                <option>SC</option>
+                <option selected>SP</option>
+                <option>SE</option>
+                <option>TO</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">CEP</label>
+              <input type="text" id="f-cep" class="form-input" placeholder="00000-000" maxlength="9">
+            </div>
+            <div class="form-group" id="grupo-genero">
+              <label class="form-label">Gênero</label>
+              <select id="f-genero" class="form-input form-select">
+                <option value="">Prefiro não informar</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+                <option value="O">Outro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group form-group-full">
+              <label class="form-label">Observações</label>
+              <textarea id="f-obs" class="form-input form-textarea" placeholder="Anotações internas sobre o cliente…"
+                rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <span class="modal-required-note"><span class="required">*</span> campos obrigatórios</span>
+          <div class="modal-actions">
+            <button class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+            <button class="btn-salvar" id="btn-salvar">Salvar Cliente</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="Javascript/clientes.js"></script>
+</body>
+
+=======
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,4 +431,5 @@
     </main>
     <script src="Javascript/clientes.js"></script>
 </body>
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
 </html>

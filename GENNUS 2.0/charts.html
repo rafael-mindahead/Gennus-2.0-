@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<<<<<<< HEAD
+
+=======
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gráficos — Gennus</title>
+<<<<<<< HEAD
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+=======
  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
   <!-- Chart.js via CDN — biblioteca de gráficos mais popular do ecossistema web.
        Funciona com <canvas> HTML: o JS desenha os gráficos dentro de uma área de pixels.
        Versão 4.x — compatível com todos os browsers modernos. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<<<<<<< HEAD
+
+  <link rel="stylesheet" href="Css/dashboard.css">
+  <link rel="stylesheet" href="Css/charts.css">
+</head>
+
+<body>
+
+  <main class="dashboard-page">
+
+    <!-- SIDEBAR -->
+=======
  
   <link rel="stylesheet" href="/GENNUS 2.0/Css/dashboard.css">
   <link rel="stylesheet" href="/GENNUS 2.0/Css/charts.css">
@@ -22,19 +47,40 @@
   <main class="dashboard-page">
  
         <!-- SIDEBAR -->
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
     <nav class="sidebar-main">
       <div class="bg-glow"></div>
       <div class="sidebar-logo">GENNUS</div>
 
       <details>
         <summary>Produtos</summary>
+<<<<<<< HEAD
+        <a href="produtos.html">Lista de Produtos</a>
+        <a href="estoque.html">Estoque</a>
+=======
         <a href="/GENNUS 2.0/produtos.html">Lista de Produtos</a>
         <a href="#">Adicionar Produto</a>
         <a href="#">Editar / Excluir</a>
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       </details>
 
       <details>
         <summary>Vendas</summary>
+<<<<<<< HEAD
+        <a href="resumo.html">Resumo do Período</a>
+        <a href="renda.html">Renda Bruta / Líquida</a>
+        <a href="vendas.html">Vendas</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="top-itens.html">Top Itens</a>
+      </details>
+
+      <details>
+        <summary>Finanças</summary>
+        <a href="receita.html">Receita</a>
+        <a href="despesas.html">Despesas</a>
+        <a href="lucro.html">Lucro</a>
+        <a href="#">IA Feedback</a>
+=======
         <a href="/GENNUS 2.0/resumo.html">Resumo do Período</a>
         <a href="/GENNUS 2.0/renda.html">Renda Bruta / Líquida</a>
         <a href="/GENNUS 2.0/top-itens.html">Top Itens</a>
@@ -46,12 +92,18 @@
         <a href="/GENNUS 2.0/despesas.html">Despesas</a>
         <a href="/GENNUS 2.0/lucro.html">Lucro</a>
         <a href="#">IA Feedback (SOON)</a>
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       </details>
 
       <details>
         <summary>Relatórios</summary>
+<<<<<<< HEAD
+        <a href="charts.html">Gráficos</a>
+        <a href="relatorio.html">Relatório</a>
+=======
         <a href="/GENNUS 2.0/charts.html">Gráficos</a>
         <a href="#">Relatório</a>
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       </details>
 
       <details class="config-details">
@@ -68,11 +120,19 @@
         <a href="#">Logout</a>
       </div>
     </nav>
+<<<<<<< HEAD
+
+    <!-- ================================================
+         CONTEÚDO PRINCIPAL
+    ================================================ -->
+
+=======
  
     <!-- ================================================
          CONTEÚDO PRINCIPAL
     ================================================ -->
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
     <!-- Cabeçalho da página -->
     <div class="charts-header">
       <div class="charts-header-left">
@@ -81,7 +141,11 @@
         <h1 class="charts-title">Gráficos</h1>
         <p class="charts-subtitle">Visão completa da performance do negócio</p>
       </div>
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       <!-- Filtro de período — botões que trocam os dados de todos os gráficos -->
       <div class="period-filter" id="period-filter">
         <!-- data-period é lido pelo JS pra saber qual conjunto de dados carregar.
@@ -92,7 +156,11 @@
         <button class="period-btn" data-period="1y">1 ano</button>
       </div>
     </div>
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
     <!-- ================================================
          GRID DE GRÁFICOS
          Layout:
@@ -101,7 +169,11 @@
          [          Top Produtos (donut) — centralizado            ]
     ================================================ -->
     <div class="charts-grid">
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       <!-- CARD 1: Receita x Despesas -->
       <div class="chart-card" id="card-receita-despesas">
         <div class="chart-card-header">
@@ -121,7 +193,11 @@
           <canvas id="chart-receita-despesas"></canvas>
         </div>
       </div>
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       <!-- CARD 2: Lucro Acumulado -->
       <div class="chart-card" id="card-lucro">
         <div class="chart-card-header">
@@ -137,7 +213,11 @@
           <canvas id="chart-lucro"></canvas>
         </div>
       </div>
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       <!-- CARD 3: Vendas por Período -->
       <div class="chart-card" id="card-vendas">
         <div class="chart-card-header">
@@ -153,7 +233,11 @@
           <canvas id="chart-vendas"></canvas>
         </div>
       </div>
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       <!-- CARD 4: Crescimento de Clientes -->
       <div class="chart-card" id="card-clientes">
         <div class="chart-card-header">
@@ -169,7 +253,11 @@
           <canvas id="chart-clientes"></canvas>
         </div>
       </div>
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
       <!-- CARD 5: Top Produtos — ocupa as duas colunas -->
       <div class="chart-card chart-card-wide" id="card-produtos">
         <div class="chart-card-header">
@@ -187,6 +275,19 @@
           <ul class="donut-legend" id="donut-legend"></ul>
         </div>
       </div>
+<<<<<<< HEAD
+
+    </div>
+    <!-- fim .charts-grid -->
+
+  </main>
+
+  <script src="Javascript/charts.js"></script>
+  <!-- Script no final do body — os elementos <canvas> já existem quando o JS roda.
+       Se estivesse no <head>, getElementById retornaria null. -->
+</body>
+
+=======
  
     </div>
     <!-- fim .charts-grid -->
@@ -197,4 +298,5 @@
   <!-- Script no final do body — os elementos <canvas> já existem quando o JS roda.
        Se estivesse no <head>, getElementById retornaria null. -->
 </body>
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
 </html>

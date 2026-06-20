@@ -1,5 +1,76 @@
 /* ================================================
    top-itens.css — Top Itens — Gennus
+<<<<<<< HEAD
+   Complementa dashboard.css
+================================================ */
+
+:root { --borda: rgba(255,255,255,0.07); }
+
+.sidebar-link-active { color: var(--roxo) !important; background: rgba(168,85,247,0.08); border-radius: 6px; }
+.sidebar-link-active::before { opacity: 1 !important; }
+
+@keyframes fadeSlideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeSlideUp   { from{opacity:0;transform:translateY(14px)}  to{opacity:1;transform:translateY(0)} }
+@keyframes growRight     { from{width:0} to{width:var(--w)} }
+
+/* ------------------------------------------------ CABEÇALHO */
+.ti-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap; padding-bottom: 4px;
+  border-bottom: 1px solid var(--borda);
+  animation: fadeSlideDown 0.45s ease both;
+}
+.ti-header-left { display: flex; flex-direction: column; gap: 4px; }
+.ti-eyebrow {
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12rem; color: var(--roxo); opacity: 0.8;
+}
+.ti-title {
+  font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; font-weight: 700;
+  letter-spacing: -0.03em; color: var(--texto); line-height: 1;
+}
+.ti-subtitle { font-size: 0.82rem; color: var(--texto-muted); margin-top: 2px; }
+
+.period-filter { display: flex; gap: 6px; background: var(--bg-surface); border: 1px solid var(--borda); border-radius: 10px; padding: 5px; }
+.period-btn {
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05rem; padding: 7px 16px;
+  border-radius: 7px; border: none; background: transparent; color: var(--texto-muted);
+  cursor: pointer; transition: all 0.2s ease;
+}
+.period-btn:hover  { color: var(--texto); background: var(--bg-surface-2); }
+.period-btn.active { background: var(--roxo); color: #fff; box-shadow: 0 0 14px rgba(168,85,247,0.35); }
+
+/* ------------------------------------------------ KPIs */
+.ti-kpis {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  animation: fadeSlideUp 0.5s ease both; animation-delay: 0.05s;
+}
+.kpi-card {
+  background: var(--bg-surface); border: 1px solid var(--borda); border-radius: 14px;
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 6px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden;
+}
+.kpi-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:2px; border-radius:14px 14px 0 0; opacity: 0.8; }
+.kpi-unidades::before { background: var(--verde); }
+.kpi-campeao::before  { background: var(--roxo); }
+.kpi-parado::before   { background: var(--vermelho); }
+.kpi-giro::before      { background: #60a5fa; }
+.kpi-card:hover { border-color: rgba(168,85,247,0.2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+
+.kpi-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08rem; color: var(--texto-muted);
+}
+.kpi-value { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.kpi-value-sm { font-size: 1.05rem; }
+.kpi-unidades .kpi-value { color: var(--verde); }
+.kpi-campeao  .kpi-value { color: var(--roxo); }
+.kpi-parado   .kpi-value { color: var(--vermelho); }
+.kpi-giro     .kpi-value { color: #60a5fa; }
+
+.kpi-delta { font-family: 'Space Grotesk', sans-serif; font-size: 0.73rem; font-weight: 600; }
+=======
    Complementa dashboard.css / base do projeto.
 ================================================ */
 
@@ -399,10 +470,101 @@ html, body {
 .kpi-c4 .kpi-value { color: var(--amarelo); }
 
 .kpi-delta { font-size: 0.73rem; font-weight: 600; }
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
 .kpi-delta.pos { color: var(--verde); }
 .kpi-delta.neg { color: var(--vermelho); }
 .kpi-sub { font-size: 0.7rem; color: #444; }
 
+<<<<<<< HEAD
+/* ------------------------------------------------ CARD BASE */
+.ti-card {
+  background: var(--bg-surface); border: 1px solid var(--borda); border-radius: 16px;
+  padding: 24px; display: flex; flex-direction: column; gap: 18px; transition: border-color 0.25s ease;
+}
+.ti-card:hover { border-color: var(--roxo-borda); }
+.ti-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--borda); }
+.ti-card-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08rem; color: var(--texto-muted); margin: 0; }
+.ti-card-subtitle { font-size: 0.75rem; color: #444; margin-top: 3px; }
+
+.ti-badge {
+  font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06rem; border-radius: 6px; padding: 4px 10px; white-space: nowrap;
+}
+.badge-verde     { color: var(--verde); background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); }
+.badge-vermelho  { color: var(--vermelho); background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); }
+
+/* ------------------------------------------------ RANKINGS */
+.ti-main-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;
+  animation: fadeSlideUp 0.5s ease both; animation-delay: 0.08s;
+}
+
+.rank-list { list-style: none; display: flex; flex-direction: column; gap: 8px; counter-reset: rank; }
+
+.rank-item {
+  display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 12px;
+  padding: 11px 13px; background: var(--bg-surface-2); border: 1px solid var(--borda);
+  border-radius: 10px; transition: all 0.2s ease; cursor: default;
+}
+.rank-item:hover { border-color: var(--roxo-borda); background: rgba(168,85,247,0.04); transform: translateX(3px); }
+
+.rank-pos { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 700; color: #333; text-align: center; }
+.card-top .rank-item:nth-child(1) .rank-pos { color: #fbbf24; }
+.card-top .rank-item:nth-child(2) .rank-pos { color: #9ca3af; }
+.card-top .rank-item:nth-child(3) .rank-pos { color: #b45309; }
+
+.rank-info { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.rank-nome { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--texto); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rank-track { height: 4px; background: rgba(255,255,255,0.04); border-radius: 99px; overflow: hidden; }
+.rank-bar   { height: 100%; border-radius: 99px; animation: growRight 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.card-top .rank-bar    { background: linear-gradient(90deg, #15803d, var(--verde)); }
+.card-bottom .rank-bar { background: linear-gradient(90deg, #7f2020, var(--vermelho)); }
+
+.rank-vals { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.rank-qtd  { font-family: 'Space Grotesk', sans-serif; font-size: 0.84rem; font-weight: 700; }
+.card-top .rank-qtd    { color: var(--verde); }
+.card-bottom .rank-qtd { color: var(--vermelho); }
+.rank-rec  { font-size: 0.66rem; color: #444; }
+
+/* ------------------------------------------------ TABELA */
+.card-tabela { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.14s; }
+
+.tabela-wrapper { overflow-x: auto; border-radius: 10px; }
+.ti-table { width: 100%; border-collapse: collapse; font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; }
+
+.ti-table thead th {
+  padding: 10px 14px; text-align: left; text-transform: uppercase; font-size: 0.65rem;
+  letter-spacing: 0.08rem; font-weight: 600; color: #444; border-bottom: 1px solid var(--borda); white-space: nowrap;
+}
+.ti-table thead th:not(:first-child):not(:nth-child(2)) { text-align: right; }
+
+.ti-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.03); transition: background 0.15s ease; }
+.ti-table tbody tr:last-child { border-bottom: none; }
+.ti-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.ti-table tbody td { padding: 12px 14px; color: var(--texto-muted); white-space: nowrap; }
+.ti-table tbody td:not(:first-child):not(:nth-child(2)) { text-align: right; }
+.ti-table tbody td:first-child { font-weight: 600; color: var(--texto); }
+.ti-table tbody td:nth-child(2) { color: #555; }
+
+.status-tag {
+  display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 5px;
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03rem;
+}
+.status-tag.alta  { background: rgba(34,197,94,0.1);  color: var(--verde); }
+.status-tag.media { background: rgba(251,191,36,0.1); color: var(--amarelo); }
+.status-tag.baixa { background: rgba(248,113,113,0.1);color: var(--vermelho); }
+
+/* ------------------------------------------------ RESPONSIVIDADE */
+@media (max-width: 1100px) { .ti-main-row { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .ti-kpis { grid-template-columns: repeat(2, 1fr); }
+  .ti-header { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .ti-kpis { grid-template-columns: 1fr; }
+  .period-btn { padding: 7px 8px; font-size: 0.65rem; }
+=======
 /* ================================================
    LINHA PRINCIPAL (chart + ranking)
 ================================================ */
@@ -792,4 +954,5 @@ html, body {
   .kpis-row { grid-template-columns: 1fr; }
   .period-btn { padding: 7px 8px; font-size: 0.65rem; }
   .page-content { padding: 16px; }
+>>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
 }
