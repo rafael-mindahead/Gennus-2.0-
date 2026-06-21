@@ -1,0 +1,42 @@
+/* periodo-fechamento.css — específico desta página
+   (estilos genéricos estão em config-shared.css) */
+
+/* ── Card de status do período ── */
+.card-status {
+  flex-direction:row; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:12px;
+}
+.status-info { display:flex; align-items:center; gap:12px; }
+.status-label {
+  font-family:'Space Grotesk',sans-serif; font-size:.68rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.07rem; color:var(--texto-muted);
+}
+.status-mes {
+  font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:700; color:var(--texto);
+}
+
+/* ── Histórico ── */
+.history-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+
+.history-item {
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 14px; border-radius:10px;
+  background:var(--bg-surface-2); border:1px solid var(--borda);
+  transition:border-color .2s;
+}
+.history-item:hover { border-color:var(--roxo-borda); }
+
+.history-mes {
+  font-family:'Space Grotesk',sans-serif; font-size:.84rem; font-weight:600; color:var(--texto);
+}
+.history-meta { display:flex; align-items:center; gap:10px; }
+.history-data { font-size:.72rem; color:var(--texto-muted); }
+
+.btn-reabrir {
+  font-family:'Space Grotesk',sans-serif; font-size:.68rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.05rem;
+  padding:4px 10px; border-radius:6px; cursor:pointer;
+  background:transparent; border:1px solid var(--borda); color:var(--texto-muted);
+  transition:all .2s;
+}
+.btn-reabrir:hover { color:var(--amarelo); border-color:rgba(251,191,36,.35); background:rgba(251,191,36,.06); }

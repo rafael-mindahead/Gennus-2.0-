@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", () => {
     const formVenda = document.getElementById("venda-form");
     const selectProd = document.getElementById("venda-produto");
-    const listaVendasHtml = document.getElementById("lista-vendas-dia");
+    const listaVendasHtml = document.getElementById("lista-vendas-dia"));
 
     let produtos = JSON.parse(localStorage.getItem("gennus_prods")) || [];
     let vendas = JSON.parse(localStorage.getItem("gennus_vendas")) || [];
@@ -603,7 +603,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 selectProd.innerHTML += `<option value="${index}">${p.nome} (Disp: ${p.estoque} ${p.unidade})</option>`;
             }
         });
-    }
+    }};
 
     formVenda.addEventListener("submit", (e) => {
         e.preventDefault();

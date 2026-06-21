@@ -3,7 +3,7 @@
 
    Localização: Javascript/register.js
 =======
-   Localização: /GENNUS 2.0/Javascript/register.js
+   Localização: Javascript/register.js
 
  
    IMPORTANTE — como funciona a referência de arquivos no JS:
@@ -87,7 +87,7 @@ var readHint    = document.getElementById('read-hint');
 
 /* CORREÇÃO: era getElementById('use-terms') — errado.
 =======
-/* CORREÇÃO: era getElementById('/GENNUS 2.0/use-terms') — errado.
+/* CORREÇÃO: era getElementById('use-terms') — errado.
 
    getElementById recebe o valor do id do HTML, não um caminho de arquivo.
    O checkbox tem id="use-terms" no register.html, então é só isso: */

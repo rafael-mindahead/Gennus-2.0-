@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Técnico — Gennus</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="Css/dashboard.css">
+  <link rel="stylesheet" href="Css/relatorio.css">
+</head>
+
+<body>
+  <main class="dashboard-page">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar-main">
+      <div class="bg-glow"></div>
+      <div class="sidebar-logo">GENNUS</div>
+
+      <details>
+        <summary>Produtos</summary>
+        <a href="produtos.html">Lista de Produtos</a>
+        <a href="estoque.html">Estoque</a>
+      </details>
+
+      <details>
+        <summary>Vendas</summary>
+        <a href="resumo.html">Resumo do Período</a>
+        <a href="renda.html">Renda Bruta / Líquida</a>
+        <a href="venda.html">Vendas</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="top-itens.html">Top Itens</a>
+      </details>
+
+      <details>
+        <summary>Finanças</summary>
+        <a href="receita.html">Receita</a>
+        <a href="despesas.html">Despesas</a>
+        <a href="lucro.html">Lucro</a>
+        <a href="#">IA Feedback</a>
+      </details>
+
+      <details open>
+        <summary>Relatórios</summary>
+        <a href="charts.html">Gráficos</a>
+        <a href="relatorio.html" class="sidebar-link-active">Relatório</a>
+      </details>
+
+      <details class="config-details">
+        <summary>Configurações</summary>
+        <a href="settings-fechamento.html">Período de Fechamento</a>
+        <a href="settings-personalizar.html">Personalizar</a>
+        <a href="settings-dados.html">Dados da Empresa</a>
+      </details>
+
+      <div class="sidebar-user">
+        <div class="perfil-border"></div>
+        <span>Perfil</span>
+        <a href="profile.html">Nome do Usuário</a>
+        <a href="index.html">Logout</a>
+      </div>
+    </nav>
+
+    <!-- CABEÇALHO -->
+    <div class="rel-header">
+      <div class="rel-header-left">
+        <span class="rel-eyebrow">Relatórios</span>
+        <h1 class="rel-title">Relatório Técnico do Sistema</h1>
+        <p class="rel-subtitle">Documentação resumida de cada módulo e tela visível no Gennus</p>
+      </div>
+      <div class="rel-header-right">
+        <span class="rel-updated" id="rel-updated">—</span>
+        <button class="btn-print" id="btn-print">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="6 9 6 2 18 2 18 9" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <rect x="6" y="14" width="12" height="8" />
+          </svg>
+          Imprimir
+        </button>
+      </div>
+    </div>
+
+    <!-- KPIs DE COBERTURA -->
+    <div class="rel-kpis" id="rel-kpis">
+      <div class="kpi-card kpi-total"><span class="kpi-label">Páginas Mapeadas</span><span class="kpi-value"
+          id="kpi-total">—</span><span class="kpi-sub">no sistema</span></div>
+      <div class="kpi-card kpi-concluido"><span class="kpi-label">Concluídas</span><span class="kpi-value"
+          id="kpi-concluido">—</span><span class="kpi-sub" id="kpi-concluido-sub">cobertura atual</span></div>
+      <div class="kpi-card kpi-parcial"><span class="kpi-label">Parciais</span><span class="kpi-value"
+          id="kpi-parcial">—</span><span class="kpi-sub">estrutura ok, dados pendentes</span></div>
+      <div class="kpi-card kpi-planejado"><span class="kpi-label">Planejadas</span><span class="kpi-value"
+          id="kpi-planejado">—</span><span class="kpi-sub">aguardando desenvolvimento</span></div>
+    </div>
+
+    <!-- STACK TÉCNICA -->
+    <div class="rel-card stack-card">
+      <div class="rel-card-header">
+        <h3>Stack Técnica</h3><span class="rel-card-sub">tecnologias em uso e planejadas</span>
+      </div>
+      <div class="stack-chips" id="stack-chips"></div>
+    </div>
+
+    <div class="rel-layout">
+
+      <!-- ÍNDICE FIXO -->
+      <nav class="rel-toc" id="rel-toc">
+        <span class="rel-toc-title">Índice</span>
+        <div class="rel-toc-list" id="rel-toc-list"></div>
+      </nav>
+
+      <!-- CONTEÚDO -->
+      <div class="rel-content" id="rel-content"></div>
+
+    </div>
+
+  </main>
+
+  <script src="Javascript/relatorio.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+/* config-shared.css — base compartilhada das páginas de Configurações
+   Importe ANTES do CSS específico de cada página. */
+
+@keyframes fadeUp   { from { opacity:0; transform:translateY(16px) } to { opacity:1; transform:none } }
+@keyframes toastIn  { from { opacity:0; transform:translateY(12px) scale(.97) } to { opacity:1; transform:none } }
+@keyframes toastOut { to   { opacity:0; transform:translateY(8px)  scale(.97) } }
+
+/* mancha roxa de fundo — padrão visual do Gennus em páginas internas */
+body::before {
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% -10%, rgba(168,85,247,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 40% at 90% 80%,  rgba(124,58,237,.10) 0%, transparent 65%);
+}
+
+/* container padrão de página de configuração */
+.config-container {
+  position:relative; z-index:1;
+  max-width:720px; margin:0 auto;
+  padding:32px 24px 72px;
+  display:flex; flex-direction:column; gap:18px;
+  animation:fadeUp .4s ease both;
+}
+
+/* ── Voltar ── */
+.btn-back {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 14px; border-radius:8px;
+  border:1px solid var(--borda); background:transparent;
+  font-family:'Space Grotesk',sans-serif; font-size:.78rem; font-weight:500;
+  color:var(--texto-muted); cursor:pointer; transition:color .2s, border-color .2s;
+}
+.btn-back:hover { color:var(--roxo); border-color:var(--roxo-borda); }
+
+/* ── Cabeçalho ── */
+.page-header { padding-bottom:20px; border-bottom:1px solid var(--borda); }
+.page-header h1 {
+  font-family:'Space Grotesk',sans-serif; font-size:1.7rem; font-weight:700;
+  letter-spacing:-.03em; line-height:1;
+  background:linear-gradient(90deg, #fff 40%, var(--roxo));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.page-header p { font-size:.82rem; color:var(--texto-muted); margin-top:5px; }
+
+/* ── Card ── */
+.card {
+  background:var(--bg-surface);
+  border:1px solid var(--borda);
+  border-radius:16px; padding:24px;
+  display:flex; flex-direction:column; gap:18px;
+  position:relative; overflow:hidden;
+  transition:border-color .25s;
+}
+.card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(168,85,247,.5), transparent);
+  opacity:0; transition:opacity .3s;
+}
+.card:hover { border-color:var(--roxo-borda); }
+.card:hover::before { opacity:1; }
+
+.card h2 {
+  font-family:'Space Grotesk',sans-serif; font-size:.7rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.09rem;
+  color:var(--texto-muted); margin:0;
+  padding-bottom:14px; border-bottom:1px solid var(--borda);
+}
+.card-hint { font-size:.74rem; color:var(--texto-muted); line-height:1.5; margin-top:-6px; }
+
+/* ── Form ── */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.form-group.full { grid-column:1/-1; }
+
+.form-group label {
+  font-family:'Space Grotesk',sans-serif; font-size:.68rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.07rem; color:var(--texto-muted);
+}
+
+.form-group input,
+.form-group select {
+  background:var(--bg-surface-2); border:1px solid var(--borda); border-radius:9px;
+  padding:10px 14px; width:100%; outline:none;
+  font-family:'Space Grotesk',sans-serif; font-size:.84rem; color:var(--texto);
+  appearance:none; -webkit-appearance:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+.form-group input::placeholder { color:#2e2e3a; }
+.form-group input:focus,
+.form-group select:focus { border-color:var(--roxo-borda); box-shadow:0 0 0 3px rgba(168,85,247,.1); }
+.form-group input.input-error { border-color:rgba(248,113,113,.55); box-shadow:0 0 0 3px rgba(248,113,113,.08); }
+.form-group input.input-ok    { border-color:rgba(34,197,94,.4); }
+
+.field-error { font-size:.68rem; color:var(--vermelho); display:none; }
+.field-error.visible { display:block; }
+
+.select-wrapper { position:relative; }
+.select-wrapper select { padding-right:36px; cursor:pointer; }
+.select-wrapper::after {
+  content:''; position:absolute; right:13px; top:50%; transform:translateY(-50%);
+  border:4px solid transparent; border-top:5px solid var(--texto-muted);
+  pointer-events:none;
+}
+
+/* ── Toggle switch ── */
+.toggle-row {
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+}
+.toggle-row-text { display:flex; flex-direction:column; gap:3px; }
+.toggle-row-text strong { font-family:'Space Grotesk',sans-serif; font-size:.82rem; font-weight:600; color:var(--texto); }
+.toggle-row-text span   { font-size:.74rem; color:var(--texto-muted); }
+
+.toggle-switch {
+  width:42px; height:24px; border-radius:99px; flex-shrink:0;
+  background:var(--bg-surface-2); border:1px solid var(--borda);
+  position:relative; cursor:pointer; transition:background .2s, border-color .2s;
+}
+.toggle-switch::after {
+  content:''; position:absolute; top:2px; left:2px; width:18px; height:18px;
+  border-radius:50%; background:var(--texto-muted);
+  transition:left .25s cubic-bezier(.16,1,.3,1), background .25s;
+}
+.toggle-switch.active { background:rgba(168,85,247,.2); border-color:var(--roxo-borda); }
+.toggle-switch.active::after { left:20px; background:var(--roxo); box-shadow:0 0 8px rgba(168,85,247,.5); }
+
+/* ── Ações (salvar/cancelar) ── */
+.page-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; }
+
+.btn-save {
+  display:inline-flex; align-items:center; gap:7px;
+  padding:10px 24px; border:none; border-radius:9px; cursor:pointer;
+  font-family:'Space Grotesk',sans-serif; font-size:.82rem; font-weight:600; color:#fff;
+  background:linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
+  box-shadow:0 0 18px rgba(168,85,247,.35); transition:all .2s;
+}
+.btn-save:hover { box-shadow:0 0 28px rgba(168,85,247,.55); transform:translateY(-1px); }
+.btn-save:active { transform:none; }
+.btn-save.loading { opacity:.65; pointer-events:none; }
+
+.btn-cancel {
+  padding:10px 18px; border:1px solid var(--borda); border-radius:9px; cursor:pointer;
+  font-family:'Space Grotesk',sans-serif; font-size:.82rem; font-weight:600;
+  background:transparent; color:var(--texto-muted); transition:all .2s;
+}
+.btn-cancel:hover { color:var(--texto); border-color:rgba(255,255,255,.15); background:rgba(255,255,255,.04); }
+
+/* ── Botão secundário (outline roxo) ── */
+.btn-outline {
+  display:inline-flex; align-items:center; gap:7px;
+  padding:9px 18px; border-radius:9px; cursor:pointer;
+  font-family:'Space Grotesk',sans-serif; font-size:.8rem; font-weight:600;
+  background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.3); color:var(--roxo);
+  transition:all .2s;
+}
+.btn-outline:hover { background:rgba(168,85,247,.18); border-color:var(--roxo); }
+
+/* ── Badges de status ── */
+.badge {
+  font-family:'Space Grotesk',sans-serif; font-size:.65rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.05rem;
+  border-radius:6px; padding:3px 9px; white-space:nowrap;
+}
+.badge-ok    { color:var(--verde);    background:rgba(34,197,94,.1);   border:1px solid rgba(34,197,94,.2); }
+.badge-muted { color:var(--texto-muted); background:rgba(255,255,255,.04); border:1px solid var(--borda); }
+.badge-roxo  { color:var(--roxo);     background:rgba(168,85,247,.1);  border:1px solid rgba(168,85,247,.2); }
+
+/* ── Toast ── */
+.toast {
+  position:fixed; bottom:24px; right:24px; z-index:999;
+  display:flex; align-items:center; gap:12px;
+  padding:13px 18px; border-radius:12px; min-width:250px;
+  background:var(--bg-surface); border:1px solid var(--borda);
+  box-shadow:0 8px 32px rgba(0,0,0,.45);
+  font-family:'Space Grotesk',sans-serif; font-size:.82rem; color:var(--texto);
+  animation:toastIn .3s ease both; pointer-events:none;
+}
+.toast.toast-out   { animation:toastOut .25s ease forwards; }
+.toast.toast-ok    { border-left:3px solid var(--verde);    border-color:rgba(34,197,94,.25); }
+.toast.toast-error { border-left:3px solid var(--vermelho); border-color:rgba(248,113,113,.25); }
+.toast-icon        { font-size:1rem; flex-shrink:0; }
+.toast-text strong { display:block; font-weight:700; margin-bottom:1px; }
+.toast-text span   { font-size:.72rem; color:var(--texto-muted); }
+
+/* ── Modal de confirmação ── */
+.modal-overlay {
+  position:fixed; inset:0; z-index:1000;
+  background:rgba(0,0,0,.6); backdrop-filter:blur(4px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.modal-overlay.visible { opacity:1; pointer-events:all; }
+
+.modal-card {
+  background:var(--bg-surface); border:1px solid var(--borda); border-radius:16px;
+  padding:24px; max-width:380px; width:90%;
+  transform:translateY(10px) scale(.98); transition:transform .2s;
+}
+.modal-overlay.visible .modal-card { transform:none; }
+
+.modal-card h3 {
+  font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700;
+  color:var(--texto); margin-bottom:8px;
+}
+.modal-card p { font-size:.82rem; color:var(--texto-muted); line-height:1.6; margin-bottom:18px; }
+.modal-actions { display:flex; justify-content:flex-end; gap:10px; }
+
+/* ── Segmented control (alternativa a radio buttons)
+   Uso: lista de opções mutuamente exclusivas, poucas (2-4).
+   <div class="segmented">
+     <button class="segmented-btn active" data-value="x">X</button>
+     <button class="segmented-btn" data-value="y" disabled>Y</button>
+   </div> ── */
+.segmented {
+  display:flex; gap:4px; background:var(--bg-surface-2);
+  border:1px solid var(--borda); border-radius:11px; padding:4px;
+}
+.segmented-btn {
+  flex:1; display:flex; flex-direction:column; align-items:center; gap:2px;
+  padding:10px 8px; border-radius:8px; border:none; background:transparent;
+  cursor:pointer; transition:all .2s;
+  font-family:'Space Grotesk',sans-serif; color:var(--texto-muted);
+}
+.segmented-btn:hover:not(:disabled):not(.active) { color:var(--texto); background:rgba(255,255,255,.04); }
+.segmented-btn.active {
+  background:linear-gradient(135deg, var(--roxo-escuro), var(--roxo)); color:#fff;
+  box-shadow:0 0 14px rgba(168,85,247,.3);
+}
+.segmented-btn:disabled { opacity:.4; cursor:not-allowed; }
+.segmented-btn strong { font-size:.8rem; font-weight:700; }
+.segmented-btn span   { font-size:.65rem; opacity:.85; }
+
+/* ── Notice / aviso ── 
+   Pra contextos sensíveis (afeta outros usuários, ação ampla, etc).
+   Tom sério, não é alerta de erro. */
+.notice {
+  display:flex; align-items:flex-start; gap:10px;
+  padding:12px 14px; border-radius:10px;
+  background:rgba(96,165,250,.06); border:1px solid rgba(96,165,250,.18);
+  font-size:.78rem; color:var(--texto-muted); line-height:1.5;
+}
+.notice-icon { flex-shrink:0; font-size:.95rem; margin-top:1px; }
+.notice strong { color:var(--texto); font-weight:600; }
+
+/* ── Lista de funcionalidades com toggle ── */
+.feature-list { display:flex; flex-direction:column; gap:8px; }
+
+.feature-item {
+  display:flex; align-items:center; gap:14px;
+  padding:13px 14px; border-radius:10px;
+  background:var(--bg-surface-2); border:1px solid var(--borda);
+  transition:opacity .2s, border-color .2s;
+}
+.feature-item:hover { border-color:var(--roxo-borda); }
+.feature-item.locked { opacity:.5; }
+
+.feature-icon {
+  width:32px; height:32px; border-radius:8px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(168,85,247,.1); color:var(--roxo);
+}
+.feature-icon svg { width:15px; height:15px; }
+
+.feature-text { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.feature-text strong {
+  font-family:'Space Grotesk',sans-serif; font-size:.82rem; font-weight:600; color:var(--texto);
+  display:flex; align-items:center; gap:7px;
+}
+.feature-text span { font-size:.72rem; color:var(--texto-muted); }
+
+/* ── Reduzir animações (acessibilidade)
+   Ativado via JS: document.documentElement.classList.toggle('reduce-motion', true)
+   Mata transições e animações em qualquer elemento da página. ── */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* ── Responsivo ── */
+@media (max-width:600px) {
+  .config-container { padding:20px 16px 48px; }
+  .form-grid { grid-template-columns:1fr; }
+  .page-actions { flex-direction:column-reverse; }
+  .btn-save, .btn-cancel { width:100%; justify-content:center; }
+  .segmented { flex-direction:column; }
+}
