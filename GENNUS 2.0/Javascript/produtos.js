@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /**
  * produtos.js — Lista de Produtos — Gennus
  * Dados simulados, filtros, busca, paginação, expand e modal.
@@ -720,5 +720,5 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     renderizar();
->>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
+
 });

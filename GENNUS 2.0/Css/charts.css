@@ -3,7 +3,7 @@
    Complementa dashboard.css (que deve estar importado antes).
    Design: dark, roxo como acento, tipografia Space Grotesk.
 ================================================ */
- 
+
 /* ------------------------------------------------
    VARIÁVEIS LOCAIS (estende o :root do dashboard.css)
 ------------------------------------------------ */
@@ -17,7 +17,7 @@
   --chart-orange:       #fb923c;
   --chart-yellow:       #fbbf24;
 }
- 
+
 /* ------------------------------------------------
    SIDEBAR: link ativo na página de gráficos
 ------------------------------------------------ */
@@ -27,14 +27,10 @@
   border-radius: 6px;
 }
 
-.sidebar-logo a{
-    text-decoration: none;
-}
- 
 .sidebar-link-active::before {
   opacity: 1 !important;
 }
- 
+
 /* ------------------------------------------------
    CABEÇALHO DA PÁGINA
 ------------------------------------------------ */
@@ -48,18 +44,18 @@
   border-bottom: 1px solid var(--borda);
   animation: fadeSlideDown 0.5s ease both;
 }
- 
+
 @keyframes fadeSlideDown {
   from { opacity: 0; transform: translateY(-12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
- 
+
 .charts-header-left {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
- 
+
 /* Label pequeno acima do título ("Relatórios") */
 .charts-eyebrow {
   font-family: 'Space Grotesk', sans-serif;
@@ -70,7 +66,7 @@
   color: var(--roxo);
   opacity: 0.8;
 }
- 
+
 .charts-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.7rem;
@@ -79,13 +75,13 @@
   color: var(--texto);
   line-height: 1;
 }
- 
+
 .charts-subtitle {
   font-size: 0.82rem;
   color: var(--texto-muted);
   margin-top: 2px;
 }
- 
+
 /* ------------------------------------------------
    FILTRO DE PERÍODO (botões 7d / 30d / 3m / 1a)
 ------------------------------------------------ */
@@ -97,7 +93,7 @@
   border-radius: 10px;
   padding: 5px;
 }
- 
+
 .period-btn {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
@@ -112,18 +108,18 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
- 
+
 .period-btn:hover {
   color: var(--texto);
   background: var(--bg-surface-2);
 }
- 
+
 .period-btn.active {
   background: var(--roxo);
   color: #fff;
   box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
 }
- 
+
 /* ------------------------------------------------
    GRID DOS CARDS DE GRÁFICOS
 ------------------------------------------------ */
@@ -132,7 +128,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
- 
+
 /* ------------------------------------------------
    CARD BASE DE GRÁFICO
 ------------------------------------------------ */
@@ -147,30 +143,30 @@
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   animation: fadeSlideUp 0.5s ease both;
 }
- 
+
 /* Stagger de entrada dos cards */
 .chart-card:nth-child(1) { animation-delay: 0.05s; }
 .chart-card:nth-child(2) { animation-delay: 0.10s; }
 .chart-card:nth-child(3) { animation-delay: 0.15s; }
 .chart-card:nth-child(4) { animation-delay: 0.20s; }
 .chart-card:nth-child(5) { animation-delay: 0.25s; }
- 
+
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
- 
+
 .chart-card:hover {
   border-color: var(--roxo-borda);
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(168, 85, 247, 0.07);
 }
- 
+
 /* Card largo (Top Produtos): ocupa as 2 colunas */
 .chart-card-wide {
   grid-column: 1 / -1;
 }
- 
+
 /* ------------------------------------------------
    CABEÇALHO INTERNO DO CARD
 ------------------------------------------------ */
@@ -181,7 +177,7 @@
   gap: 12px;
   flex-wrap: wrap;
 }
- 
+
 .chart-card-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.82rem;
@@ -191,13 +187,13 @@
   color: var(--texto-muted);
   margin: 0;
 }
- 
+
 .chart-card-subtitle {
   font-size: 0.75rem;
   color: #444;
   margin-top: 3px;
 }
- 
+
 /* ------------------------------------------------
    LEGENDA INLINE DOS CARDS
 ------------------------------------------------ */
@@ -207,7 +203,7 @@
   gap: 10px;
   flex-wrap: wrap;
 }
- 
+
 .chart-legend span {
   font-size: 0.72rem;
   color: var(--texto-muted);
@@ -215,7 +211,7 @@
   align-items: center;
   gap: 5px;
 }
- 
+
 /* Bolinhas coloridas da legenda */
 .legend-dot {
   width: 8px;
@@ -224,13 +220,13 @@
   border-radius: 50%;
   display: inline-block !important;
 }
- 
+
 .legend-dot.green        { background: var(--chart-green); box-shadow: 0 0 6px rgba(34,197,94,0.5); }
 .legend-dot.red          { background: var(--chart-red); box-shadow: 0 0 6px rgba(248,113,113,0.5); }
 .legend-dot.purple       { background: var(--chart-purple); box-shadow: 0 0 6px rgba(168,85,247,0.5); }
 .legend-dot.purple-light { background: var(--chart-purple-light); box-shadow: 0 0 6px rgba(192,132,252,0.5); }
 .legend-dot.blue         { background: var(--chart-blue); box-shadow: 0 0 6px rgba(96,165,250,0.5); }
- 
+
 /* ------------------------------------------------
    WRAPPER DO CANVAS
    Controla a altura dos gráficos — Chart.js respeita
@@ -241,14 +237,14 @@
   width: 100%;
   height: 220px;
 }
- 
+
 /* Wrapper do donut (menor, centralizado) */
 .chart-canvas-donut {
   width: 220px;
   height: 220px;
   flex-shrink: 0;
 }
- 
+
 /* ------------------------------------------------
    LAYOUT ESPECIAL: CARD DONUT (Top Produtos)
    Canvas à esq + legenda lista à dir
@@ -259,7 +255,7 @@
   gap: 40px;
   flex-wrap: wrap;
 }
- 
+
 /* Lista de itens do donut */
 .donut-legend {
   list-style: none;
@@ -269,7 +265,7 @@
   flex: 1;
   min-width: 180px;
 }
- 
+
 .donut-legend li {
   display: flex;
   align-items: center;
@@ -283,13 +279,13 @@
   border: 1px solid transparent;
   transition: all 0.2s ease;
 }
- 
+
 .donut-legend li:hover {
   background: var(--bg-surface-2);
   border-color: var(--borda);
   color: var(--texto);
 }
- 
+
 /* Bolinha colorida da legenda do donut */
 .donut-legend li .dot {
   width: 10px;
@@ -297,14 +293,14 @@
   border-radius: 50%;
   flex-shrink: 0;
 }
- 
+
 /* Nome do produto */
 .donut-legend li .nome {
   flex: 1;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
 }
- 
+
 /* Porcentagem à direita */
 .donut-legend li .pct {
   font-family: 'Space Grotesk', sans-serif;
@@ -312,7 +308,7 @@
   font-size: 0.88rem;
   color: var(--texto);
 }
- 
+
 /* ------------------------------------------------
    ESTADO DE TRANSIÇÃO DOS GRÁFICOS
    Fade ao trocar de período
@@ -320,11 +316,11 @@
 .chart-canvas-wrapper canvas {
   transition: opacity 0.3s ease;
 }
- 
+
 .chart-canvas-wrapper.updating canvas {
   opacity: 0.3;
 }
- 
+
 /* ------------------------------------------------
    RESPONSIVIDADE
 ------------------------------------------------ */
@@ -332,33 +328,33 @@
   .charts-grid {
     grid-template-columns: 1fr;
   }
- 
+
   .chart-card-wide {
     grid-column: 1;
   }
- 
+
   .charts-header {
     flex-direction: column;
     align-items: flex-start;
   }
- 
+
   .chart-donut-wrapper {
     flex-direction: column;
     align-items: flex-start;
   }
- 
+
   .chart-canvas-donut {
     width: 100%;
     height: 200px;
   }
 }
- 
+
 @media (max-width: 560px) {
   .period-filter {
     width: 100%;
     justify-content: space-between;
   }
- 
+
   .period-btn {
     flex: 1;
     text-align: center;

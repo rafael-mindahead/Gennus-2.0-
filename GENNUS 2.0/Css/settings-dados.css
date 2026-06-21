@@ -1,0 +1,15 @@
+/* dados-empresa.css — específico desta página */
+
+/* ── CEP com spinner de carregamento ── */
+.cep-wrap { position:relative; }
+
+.cep-spinner {
+  position:absolute; right:12px; top:50%; transform:translateY(-50%);
+  width:14px; height:14px; border-radius:50%;
+  border:2px solid var(--borda); border-top-color:var(--roxo);
+  opacity:0; animation:spin .6s linear infinite;
+  pointer-events:none;
+}
+.cep-spinner.loading { opacity:1; }
+
+@keyframes spin { to { transform:translateY(-50%) rotate(360deg); } }

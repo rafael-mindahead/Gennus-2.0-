@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /**
  * venda.js — Gestão de Vendas — Gennus
  * Dados simulados, filtros, busca, paginação e linhas expansíveis.
@@ -586,11 +586,11 @@ function initEvents() {
 document.addEventListener('DOMContentLoaded', () => {
   render('7d');
   initEvents();
-=======
+
 document.addEventListener("DOMContentLoaded", () => {
     const formVenda = document.getElementById("venda-form");
     const selectProd = document.getElementById("venda-produto");
-    const listaVendasHtml = document.getElementById("lista-vendas-dia");
+    const listaVendasHtml = document.getElementById("lista-vendas-dia"));
 
     let produtos = JSON.parse(localStorage.getItem("gennus_prods")) || [];
     let vendas = JSON.parse(localStorage.getItem("gennus_vendas")) || [];
@@ -603,7 +603,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 selectProd.innerHTML += `<option value="${index}">${p.nome} (Disp: ${p.estoque} ${p.unidade})</option>`;
             }
         });
-    }
+    }};
 
     formVenda.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -658,5 +658,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     atualizarSelect();
     renderVendas();
->>>>>>> eecb125950e2eb0001bbbdf582cb1851bd5790a7
+
 });

@@ -1,0 +1,108 @@
+/* ================================================
+   relatorio.css — Relatório Técnico do Sistema — Gennus
+   Complementa dashboard.css.
+================================================ */
+:root { --borda: rgba(255,255,255,0.07); }
+
+.sidebar-link-active { color: var(--roxo) !important; background: rgba(168,85,247,0.08); border-radius: 6px; }
+.sidebar-link-active::before { opacity: 1 !important; }
+
+@keyframes fadeSlideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeSlideUp   { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+/* Cabeçalho */
+.rel-header { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-bottom:4px; border-bottom:1px solid var(--borda); animation:fadeSlideDown .45s ease both; }
+.rel-eyebrow { font-family:'Space Grotesk',sans-serif; font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.12rem; color:var(--roxo); opacity:.8; }
+.rel-title { font-family:'Space Grotesk',sans-serif; font-size:1.7rem; font-weight:700; letter-spacing:-.03em; color:var(--texto); line-height:1; }
+.rel-subtitle { font-size:.82rem; color:var(--texto-muted); margin-top:2px; }
+.rel-header-right { display:flex; align-items:center; gap:14px; }
+.rel-updated { font-family:'Space Grotesk',sans-serif; font-size:.68rem; color:#444; }
+.btn-print { display:flex; align-items:center; gap:7px; font-family:'Space Grotesk',sans-serif; font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.05rem; padding:9px 16px; border-radius:8px; border:1px solid var(--borda); background:var(--bg-surface); color:var(--texto-muted); cursor:pointer; transition:all .2s; }
+.btn-print:hover { border-color:var(--roxo-borda); color:var(--roxo); background:rgba(168,85,247,.06); }
+
+/* KPIs */
+.rel-kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; animation:fadeSlideUp .5s ease both; animation-delay:.05s; }
+.kpi-card { background:var(--bg-surface); border:1px solid var(--borda); border-radius:14px; padding:20px 22px; display:flex; flex-direction:column; gap:6px; position:relative; overflow:hidden; transition:border-color .25s,transform .25s,box-shadow .25s; }
+.kpi-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; border-radius:14px 14px 0 0; }
+.kpi-total::before     { background:var(--roxo); }
+.kpi-concluido::before { background:var(--verde); }
+.kpi-parcial::before   { background:var(--amarelo); }
+.kpi-planejado::before { background:#60a5fa; }
+.kpi-card:hover { border-color:rgba(168,85,247,.2); transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.3); }
+.kpi-label { font-family:'Space Grotesk',sans-serif; font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.08rem; color:var(--texto-muted); }
+.kpi-value { font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:700; letter-spacing:-.02em; }
+.kpi-total .kpi-value     { color:var(--roxo); }
+.kpi-concluido .kpi-value { color:var(--verde); }
+.kpi-parcial .kpi-value   { color:var(--amarelo); }
+.kpi-planejado .kpi-value { color:#60a5fa; }
+.kpi-sub { font-size:.7rem; color:#444; }
+
+/* Card base */
+.rel-card { background:var(--bg-surface); border:1px solid var(--borda); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:16px; transition:border-color .25s; animation:fadeSlideUp .5s ease both; animation-delay:.08s; }
+.rel-card:hover { border-color:var(--roxo-borda); }
+.rel-card-header { display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.rel-card-header h3 { font-family:'Space Grotesk',sans-serif; font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.07rem; color:var(--texto-muted); }
+.rel-card-sub { font-size:.72rem; color:#444; }
+
+/* Stack chips */
+.stack-chips { display:flex; gap:8px; flex-wrap:wrap; }
+.stack-chip { display:flex; align-items:center; gap:6px; font-family:'Space Grotesk',sans-serif; font-size:.72rem; font-weight:600; padding:6px 13px; border-radius:99px; border:1px solid var(--borda); background:var(--bg-surface-2); color:var(--texto-muted); }
+.stack-chip.ativo { border-color:rgba(34,197,94,.3); color:#4ade80; background:rgba(34,197,94,.06); }
+.stack-chip.planejado { border-color:rgba(96,165,250,.25); color:#93c5fd; background:rgba(96,165,250,.05); }
+.stack-chip-dot { width:6px; height:6px; border-radius:50%; }
+
+/* Layout: TOC + conteúdo */
+.rel-layout { display:grid; grid-template-columns:220px 1fr; gap:20px; align-items:start; }
+
+.rel-toc { position:sticky; top:24px; display:flex; flex-direction:column; gap:10px; background:var(--bg-surface); border:1px solid var(--borda); border-radius:14px; padding:18px; animation:fadeSlideUp .5s ease both; animation-delay:.1s; }
+.rel-toc-title { font-family:'Space Grotesk',sans-serif; font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.09rem; color:#444; padding-bottom:8px; border-bottom:1px solid var(--borda); }
+.rel-toc-list { display:flex; flex-direction:column; gap:2px; }
+.rel-toc-link { display:flex; justify-content:space-between; align-items:center; gap:8px; font-family:'Space Grotesk',sans-serif; font-size:.76rem; font-weight:500; color:var(--texto-muted); text-decoration:none; padding:7px 9px; border-radius:7px; transition:all .2s; }
+.rel-toc-link:hover { background:var(--bg-surface-2); color:var(--texto); }
+.rel-toc-link.active { background:rgba(168,85,247,.1); color:var(--roxo); }
+.rel-toc-count { font-size:.62rem; color:#444; }
+.rel-toc-link.active .rel-toc-count { color:var(--roxo); opacity:.7; }
+
+.rel-content { display:flex; flex-direction:column; gap:18px; }
+
+/* Seção de categoria */
+.rel-section { display:flex; flex-direction:column; gap:14px; scroll-margin-top:20px; animation:fadeSlideUp .5s ease both; }
+.rel-section-header { display:flex; align-items:baseline; gap:10px; padding-bottom:10px; border-bottom:1px solid var(--borda); }
+.rel-section-titulo { font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:700; color:var(--texto); letter-spacing:-.01em; }
+.rel-section-count { font-size:.72rem; color:#444; }
+
+/* Grid de cards de página */
+.pagina-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+
+.pagina-card { background:var(--bg-surface); border:1px solid var(--borda); border-radius:14px; padding:18px 20px; display:flex; flex-direction:column; gap:12px; transition:border-color .25s, transform .25s; }
+.pagina-card:hover { border-color:var(--roxo-borda); transform:translateY(-1px); }
+
+.pagina-card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+.pagina-nome { font-family:'Space Grotesk',sans-serif; font-size:.88rem; font-weight:700; color:var(--texto); }
+.pagina-rota { font-family:'Space Grotesk',sans-serif; font-size:.66rem; color:#555; background:rgba(255,255,255,.03); border:1px solid var(--borda); border-radius:5px; padding:2px 7px; display:inline-block; margin-top:4px; }
+
+.status-badge { display:inline-flex; align-items:center; gap:5px; font-size:.62rem; font-weight:700; padding:4px 9px; border-radius:6px; border:1px solid; white-space:nowrap; flex-shrink:0; }
+.status-badge::before { content:''; width:6px; height:6px; border-radius:50%; }
+.status-concluido { background:rgba(34,197,94,.08); color:#4ade80; border-color:rgba(34,197,94,.2); }
+.status-concluido::before { background:#22c55e; }
+.status-parcial { background:rgba(251,191,36,.08); color:#fcd34d; border-color:rgba(251,191,36,.2); }
+.status-parcial::before { background:#fbbf24; }
+.status-planejado { background:rgba(96,165,250,.08); color:#93c5fd; border-color:rgba(96,165,250,.2); }
+.status-planejado::before { background:#60a5fa; }
+
+.pagina-bullets { display:flex; flex-direction:column; gap:6px; }
+.pagina-bullet { display:flex; align-items:flex-start; gap:8px; font-size:.78rem; line-height:1.5; color:var(--texto-muted); }
+.pagina-bullet::before { content:'→'; color:var(--roxo); opacity:.6; font-size:.7rem; margin-top:2px; flex-shrink:0; }
+
+/* Responsivo */
+@media (max-width:1100px) { .rel-layout{grid-template-columns:1fr} .rel-toc{position:relative; top:0;} .pagina-grid{grid-template-columns:1fr} }
+@media (max-width:900px)  { .rel-kpis{grid-template-columns:repeat(2,1fr)} .rel-header{flex-direction:column;align-items:flex-start} }
+@media (max-width:560px)  { .rel-kpis{grid-template-columns:1fr} }
+
+/* Impressão */
+@media print {
+  .sidebar-main, .rel-toc, .btn-print, .rel-updated { display:none !important; }
+  .dashboard-page { padding-left:20px !important; }
+  body { background:#fff !important; color:#000 !important; }
+  .rel-card, .pagina-card, .kpi-card { border-color:#ccc !important; background:#fff !important; }
+}

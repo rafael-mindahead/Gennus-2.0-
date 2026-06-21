@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalizar — Gennus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Css/dashboard.css" />
+  <link rel="stylesheet" href="Css/settings-shared.css" />
+  <link rel="stylesheet" href="Css/settings-personalizar.css" />
+</head>
+<body>
+
+<main class="config-container">
+
+  <div class="back-button-container">
+    <button type="button" class="btn-back" onclick="history.back()">← Voltar</button>
+  </div>
+
+  <header class="page-header">
+    <h1>Personalizar</h1>
+    <p>Tema, identidade visual e quais funcionalidades aparecem na interface.</p>
+  </header>
+
+  <!-- ── Tema ── -->
+  <section class="card">
+    <h2>Tema do Sistema</h2>
+
+    <div class="theme-grid">
+      <button type="button" class="theme-option active" data-theme="dark">
+        <div class="theme-preview theme-preview-dark">
+          <span class="tp-sidebar"></span>
+          <span class="tp-content"><span class="tp-bar"></span><span class="tp-bar short"></span></span>
+        </div>
+        <span class="theme-option-label">Escuro</span>
+      </button>
+
+      <button type="button" class="theme-option" data-theme="light">
+        <div class="theme-preview theme-preview-light">
+          <span class="tp-sidebar"></span>
+          <span class="tp-content"><span class="tp-bar"></span><span class="tp-bar short"></span></span>
+        </div>
+        <span class="theme-option-label">Claro</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ── Porte do negócio ── -->
+  <section class="card">
+    <h2>Porte do Negócio</h2>
+    <p class="card-hint">
+      Define quantas funcionalidades aparecem na sua interface. Não afeta seus dados —
+      só o que fica visível na navegação.
+    </p>
+
+    <div class="segmented" id="porteSegmented">
+      <button type="button" class="segmented-btn active" data-porte="pequeno">
+        <strong>Pequeno</strong>
+        <span>Essencial</span>
+      </button>
+      <button type="button" class="segmented-btn" data-porte="medio">
+        <strong>Médio</strong>
+        <span>Personalizável</span>
+      </button>
+      <button type="button" class="segmented-btn" data-porte="grande" disabled title="Em breve">
+        <strong>Grande</strong>
+        <span>Em breve</span>
+      </button>
+    </div>
+
+    <div class="notice" id="porteNotice">
+      <span class="notice-icon">ℹ️</span>
+      <span>
+        No modo <strong>Pequeno</strong>, o sistema mostra só Dashboard, Vendas e Clientes —
+        sem poluição visual. Mude para <strong>Médio</strong> para ativar funcionalidades
+        individualmente.
+      </span>
+    </div>
+  </section>
+
+  <!-- ── Funcionalidades (só desbloqueado no modo Médio) ── -->
+  <section class="card">
+    <h2>Funcionalidades do Sistema</h2>
+
+    <div class="notice">
+      <span class="notice-icon">⚠️</span>
+      <span><strong>Essas alterações afetam a interface de todos os usuários do sistema.</strong></span>
+    </div>
+
+    <div class="feature-list" id="featureList">
+      <!-- preenchido via JS -->
+    </div>
+  </section>
+
+  <!-- ── Densidade da interface ── -->
+  <section class="card">
+    <h2>Densidade da Interface</h2>
+    <p class="card-hint">Controla o espaçamento de tabelas, listas e cards.</p>
+
+    <div class="segmented" id="densidadeSegmented">
+      <button type="button" class="segmented-btn" data-densidade="compacta">
+        <strong>Compacta</strong>
+        <span>Mais dados na tela</span>
+      </button>
+      <button type="button" class="segmented-btn active" data-densidade="confortavel">
+        <strong>Confortável</strong>
+        <span>Mais espaçamento</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ── Acessibilidade ── -->
+  <section class="card">
+    <h2>Acessibilidade</h2>
+
+    <div class="toggle-row">
+      <div class="toggle-row-text">
+        <strong>Reduzir animações</strong>
+        <span>Desativa transições e efeitos de movimento na interface.</span>
+      </div>
+      <div class="toggle-switch" data-toggle="reduzir-animacoes"></div>
+    </div>
+
+    <div class="toggle-row">
+      <div class="toggle-row-text">
+        <strong>Alto contraste <span class="badge badge-muted">Em breve</span></strong>
+        <span>Aumenta o contraste de cores para melhor legibilidade.</span>
+      </div>
+      <div class="toggle-switch" data-toggle="alto-contraste" disabled></div>
+    </div>
+  </section>
+
+  <!-- ── Identidade visual ── -->
+  <section class="card">
+    <h2>Identidade Visual</h2>
+    <p class="card-hint">Cor de destaque e logo usadas em relatórios, telas e documentos exportados.</p>
+
+    <div class="swatches-row" id="swatchesRow"></div>
+
+    <div class="logo-uploader">
+      <div class="logo-preview-wrap">
+        <img src="../assets/img/logo-placeholder.png" alt="Logo" class="logo-preview" id="logoPreview" />
+      </div>
+      <div>
+        <input type="file" id="logoInput" accept="image/*" />
+        <div class="logo-actions">
+          <button type="button" class="btn-outline" id="btnLogoChange">Alterar Logo</button>
+          <button type="button" class="btn-cancel" id="btnLogoRemove">Remover</button>
+        </div>
+        <span class="card-hint">PNG ou SVG, fundo transparente · máx. 2 MB</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ações ── -->
+  <section class="page-actions">
+    <button type="button" class="btn-cancel" id="btnCancelar">Cancelar</button>
+    <button type="button" class="btn-save" id="btnSalvar">Salvar Alterações</button>
+  </section>
+
+</main>
+
+<script src="Javascript/settings-shared.js"></script>
+<script src="Javascript/settings-personalizar.js"></script>
+</body>
+</html>
